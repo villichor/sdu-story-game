@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev            # 本地开发默认 dev；上线改成 prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sdu_story_game?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: your_password   # 改成你本地 MySQL 的密码
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true    # 数据库下划线 <-> Java 驼峰 自动映射
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   # 控制台打印 SQL，方便调试
+  global-config:
+    db-config:
+      id-type: auto        # 主键自增，对应表里的 AUTO_INCREMENT
+
+# ============ 自定义配置 ============
+app:
+  jwt:
+    # 你自己系统登录态用的密钥（和统一认证那把 key 无关，务必不同）
+    secret: change-this-to-a-long-random-secret-string-at-least-32-chars
+    # 你自己 JWT 的有效期（毫秒），这里设 7 天
+    expire: 604800000
+  cas:
+    # 和学长约定的那把 key，用于解开他重定向过来的 10 秒 token
+    shared-key: your-agreed-key-with-senior
+    # 认证成功后最终要跳回的前端页面地址
+    frontend-url: http://localhost:5173/login-success
+    # 是否开启 mock（本地开发用；true=不验真 token，直接放行测试学号）
+    mock-enabled: true

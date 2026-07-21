@@ -1,0 +1,4 @@
+# 开发环境覆盖配置。默认 active=dev 生效，mock 开启，本地库。
+app:
+  cas:
+    mock-enabled: true

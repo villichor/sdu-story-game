@@ -1,0 +1,14 @@
+# 生产环境覆盖配置。启动时 spring.profiles.active=prod 生效。
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sdu_story_game?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: ${DB_PASSWORD}       # 生产密码走环境变量，别写死
+
+app:
+  cas:
+    mock-enabled: false            # 生产关闭 mock，走真认证
+    frontend-url: https://你的正式域名/login-success
+    shared-key: ${CAS_SHARED_KEY}  # 和学长约定的 key，走环境变量
+  jwt:
+    secret: ${APP_JWT_SECRET}
