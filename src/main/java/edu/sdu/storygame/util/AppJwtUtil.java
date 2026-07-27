@@ -11,8 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 /**
- * 我们自己系统的登录态 JWT —— 用户登录后签发，之后每个请求带它，拦截器校验。
- * 这把密钥与统一认证那把 shared-key 完全无关，是我们自己的。
+ * 自己的登录态JWT
  */
 @Component
 public class AppJwtUtil {
@@ -26,7 +25,6 @@ public class AppJwtUtil {
         this.expire = expire;
     }
 
-    /** 登录成功后签发，userId 放进 subject */
     public String generate(Long userId) {
         Date now = new Date();
         return Jwts.builder()
@@ -37,7 +35,6 @@ public class AppJwtUtil {
                 .compact();
     }
 
-    /** 校验并取出 userId；失败返回 null */
     public Long parseUserId(String token) {
         try {
             Claims claims = Jwts.parser()

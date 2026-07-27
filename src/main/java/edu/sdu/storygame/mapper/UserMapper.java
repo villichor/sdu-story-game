@@ -1,7 +1,7 @@
 package edu.sdu.storygame.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import edu.sdu.storygame.entity.User;
+import edu.sdu.storygame.data.po.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
