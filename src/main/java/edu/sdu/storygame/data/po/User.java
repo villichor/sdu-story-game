@@ -16,13 +16,9 @@ public class User {
     private Long id;
 
     private String username;          // 用户名
-    private Boolean isGuest;          // 是否是游客
+    private Boolean isGuest;          // 是否是游客，1游客，0统一认证用户
     private String studentId;         // 学号
-    private String passwordHash;      // 密码散列（接统一认证后可弃用）
     private String avatarUrl;
-    private Integer progressRate;     // 总进度0-100
-    private Integer unlockedStoryCount;
-    private Integer achievementCount;
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createdAt;
     @TableField(fill = FieldFill.INSERT_UPDATE)

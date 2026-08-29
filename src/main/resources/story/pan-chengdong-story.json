@@ -1,0 +1,1339 @@
+{
+  "schemaVersion": 1,
+  "chapter": {
+    "code": "pan_chengdong",
+    "title": "潘承洞——数学求索",
+    "theme": "求索、育人与担当",
+    "characterName": "潘承洞",
+    "orderIndex": 1
+  },
+  "achievements": [
+    {
+      "code": "pan_chengdong_complete",
+      "name": "求索之心",
+      "description": "完成潘承洞人物故事",
+      "icon": "🏆",
+      "type": "chapter",
+      "souvenir": "数学求索纪念章",
+      "triggerType": "chapter_completed",
+      "triggerNodeCode": "pan_epilogue"
+    }
+  ],
+  "nodes": [
+    {
+      "code": "pan_prologue",
+      "type": "normal",
+      "title": "序幕：校史馆",
+      "entry": true,
+      "progressPercent": 0,
+      "backgroundRef": "pan/prologue/campus_road",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "pan_prologue_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "这天你漫步在中心校区，闲来无事决定去校史馆参观。参观着参观着，你在潘承洞的介绍前停了下来。",
+          "portraitRef": null,
+          "effectRef": "scene:pan/prologue/history_museum",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_prologue_002",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "潘承洞……解析数论……为哥德巴赫猜想做出重要贡献……",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_prologue_003",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "著书立说……曾担任山东大学校长，培养人才……当选中国科学院院士……确实是很伟大的数学家呢。",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_prologue_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "看到这里，你心生敬佩。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_prologue_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "时间已经到中午，你前往齐园餐厅吃午饭。",
+          "portraitRef": null,
+          "effectRef": "scene:pan/prologue/qiyuan_restaurant",
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_prologue_006",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "吃什么好呢……拌面？卷饼？包子和粥？还是再上楼看看？",
+          "portraitRef": "protagonist/thinking",
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "pan_food_noodles",
+          "text": "拌面",
+          "effect": "remember:food=拌面",
+          "toNodeCode": "pan_prologue_sleep",
+          "orderIndex": 0
+        },
+        {
+          "code": "pan_food_wrap",
+          "text": "卷饼",
+          "effect": "remember:food=卷饼",
+          "toNodeCode": "pan_prologue_sleep",
+          "orderIndex": 1
+        },
+        {
+          "code": "pan_food_home_cooking",
+          "text": "家常菜",
+          "effect": "remember:food=家常菜",
+          "toNodeCode": "pan_prologue_sleep",
+          "orderIndex": 2
+        },
+        {
+          "code": "pan_food_bun_congee",
+          "text": "包子和粥",
+          "effect": "remember:food=包子和粥",
+          "toNodeCode": "pan_prologue_sleep",
+          "orderIndex": 3
+        }
+      ],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_prologue_sleep",
+      "type": "normal",
+      "title": "序幕：入梦",
+      "entry": false,
+      "progressPercent": 5,
+      "backgroundRef": "pan/prologue/qiyuan_restaurant",
+      "cgRef": null,
+      "nextNodeCode": "pan_act1_arrival",
+      "lines": [
+        {
+          "code": "pan_sleep_001",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "就这个吧。",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_sleep_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你选好了窗口，排队等候。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_sleep_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "不知怎么，你感到些许困意……",
+          "portraitRef": null,
+          "effectRef": "transition:eyes_close_blur",
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": false
+    },
+    {
+      "code": "pan_act1_arrival",
+      "type": "normal",
+      "title": "第一幕：来到山大",
+      "entry": false,
+      "progressPercent": 10,
+      "backgroundRef": "pan/act1/sdu_gate_1960s",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "pan_arrival_001",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "从梦境中迷迷糊糊地睁开眼睛。",
+          "portraitRef": null,
+          "effectRef": "transition:eyes_open_blur",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_002",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "？我这是怎么了？这是到哪来了？",
+          "portraitRef": "pan/young/confused",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_003",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "头有点晕……怎么一下子什么都想不起来了……",
+          "portraitRef": "pan/young/confused",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "这时，一段记忆涌入你的脑海……",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你是潘承洞，1934年5月26日出生于江苏苏州。读高中时你就曾发现《范氏大代数》中一道循环排列题的解答有误，并作出了改正。1952年，你考入北京大学数学力学系，四年后留校做研究生。1957年，你成为闵嗣鹤教授的研究生，研究L函数的零点分布及其在著名数论问题中的应用。后来，你参加华罗庚教授主持的哥德巴赫猜想讨论班，与陈景润、王元相识，常在一起讨论、学习和互相启发。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "现在，27岁、研究生毕业的你来到了山东大学。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_007",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "对了，我是来这里的数学系担任助教。",
+          "portraitRef": "pan/young/normal",
+          "effectRef": null,
+          "orderIndex": 6,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_008",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你走进了学校的大门。往后的一段时间里，你白天给学生们讲课，晚上灵感一来，又会冲到教室里进行自己的研究。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 7,
+          "condition": null
+        },
+        {
+          "code": "pan_arrival_009",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "至于研究方向，这也是你正在思索的……",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 8,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "pan_route_a",
+          "text": "主攻哥德巴赫猜想",
+          "effect": "route=A",
+          "toNodeCode": "pan_a_proof_choice",
+          "orderIndex": 0
+        },
+        {
+          "code": "pan_route_b",
+          "text": "转向数学的应用方向",
+          "effect": "route=B",
+          "toNodeCode": "pan_b_act1",
+          "orderIndex": 1
+        },
+        {
+          "code": "pan_route_c",
+          "text": "兼修数论与应用数学",
+          "effect": "route=C",
+          "toNodeCode": "pan_c_act1",
+          "orderIndex": 2
+        }
+      ],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_a_proof_choice",
+      "type": "normal",
+      "title": "第一幕 A线：证明思路",
+      "entry": false,
+      "progressPercent": 20,
+      "backgroundRef": "pan/act1/classroom",
+      "cgRef": "pan/act1/blackboard_proof",
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "pan_a_proof_001",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "上回书信，王元兄还是不相信我的证明，真是其中有什么疏漏么？",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_a_proof_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我再从头推一次罢……",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_a_proof_003",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "该用什么方法来呢？",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "pan_proof_renyi",
+          "text": "使用瑞尼曾采用的方法",
+          "effect": null,
+          "toNodeCode": "pan_a_wrong_renyi",
+          "orderIndex": 0
+        },
+        {
+          "code": "pan_proof_turan",
+          "text": "使用图兰幂和方法",
+          "effect": null,
+          "toNodeCode": "pan_a_wrong_turan",
+          "orderIndex": 1
+        },
+        {
+          "code": "pan_proof_large_sieve",
+          "text": "使用大筛法",
+          "effect": null,
+          "toNodeCode": "pan_a_breakthrough",
+          "orderIndex": 2
+        }
+      ],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_a_wrong_renyi",
+      "type": "normal",
+      "title": "A线：此路不通",
+      "entry": false,
+      "progressPercent": 20,
+      "backgroundRef": "pan/act1/classroom",
+      "cgRef": "pan/act1/blackboard_proof",
+      "nextNodeCode": "pan_a_proof_choice",
+      "lines": [
+        {
+          "code": "pan_a_renyi_001",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "瑞尼结合了布龙筛法和大筛法，于1947年证明了命题“1+c”。",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_a_renyi_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "可这只能证明c的存在，照此思路继续，这个数值将大到失去数学意义。",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_a_renyi_003",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "恐怕难有突破，或许该换个思路……",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": false
+    },
+    {
+      "code": "pan_a_wrong_turan",
+      "type": "normal",
+      "title": "A线：重新思考",
+      "entry": false,
+      "progressPercent": 20,
+      "backgroundRef": "pan/act1/classroom",
+      "cgRef": "pan/act1/blackboard_proof",
+      "nextNodeCode": "pan_a_proof_choice",
+      "lines": [
+        {
+          "code": "pan_a_turan_001",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "这个我还算熟悉，我曾经用这个方法得出了Linnik常数的一个数值上界。",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_a_turan_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "可若要继续推进……这样去算，这个常数会变得极其巨大。",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_a_turan_003",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "还是想想别的方法吧。",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": false
+    },
+    {
+      "code": "pan_a_breakthrough",
+      "type": "normal",
+      "title": "第一幕 A线：关键突破",
+      "entry": false,
+      "progressPercent": 30,
+      "backgroundRef": "pan/act1/classroom",
+      "cgRef": "pan/act1/blackboard_proof",
+      "nextNodeCode": "pan_a_act2",
+      "lines": [
+        {
+          "code": "pan_a_break_001",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "大筛法么……这便是我先前多次与王元兄探讨的了。",
+          "portraitRef": "pan/young/focused",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_a_break_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我曾研究过L函数零点分布，这让我对大筛法的使用更加得心应手，我先前也是因此才直觉得出θ应当取1/3。",
+          "portraitRef": "pan/young/focused",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_a_break_003",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "王元兄便是不信这1/3，即便在我看来我的逻辑已经足够严密。",
+          "portraitRef": "pan/young/focused",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_a_break_004",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "……那好，我便再证上一次！",
+          "portraitRef": "pan/young/determined",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_a_break_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "关于“1+5”，最开始，你将初步证明思路写信给了师兄王元，但得到的是对方的反驳。自此，你们开始了长达数月、累计60多封的长信论战。最终，王元被你的严密论证说服。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_a_break_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1963年，你又证明了“1+4”；1966年，陈景润证明了“1+2”。这些成果使中国在哥德巴赫猜想研究中处于世界领先地位，被国际数学界公认为关键性突破。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": false
+    },
+    {
+      "code": "pan_b_act1",
+      "type": "normal",
+      "title": "第一幕 B线：转向应用",
+      "entry": false,
+      "progressPercent": 25,
+      "backgroundRef": "pan/prologue/campus_road",
+      "cgRef": null,
+      "nextNodeCode": "pan_b_act2",
+      "lines": [
+        {
+          "code": "pan_b1_001",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我到现在已经研究了许久的数论，它的确很让人着迷。",
+          "portraitRef": "pan/young/thinking",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "可是现在国内做基础理论研究工作并不容易……大家看重现实意义本无可厚非，但说数论是“洋人的垃圾”实在是言之过矣……",
+          "portraitRef": "pan/young/serious",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_003",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我始终相信数论是有用的，可现状如此……或许是我需要迈出一步。",
+          "portraitRef": "pan/young/determined",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1966年，国内基础理论研究工作受到严重冲击，你的研究工作一度无法正常进行。当时许多学者都选择将研究向更具应用性的方向调整。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "于是，你决定顺应形势，将研究方向从纯理论转向更具应用性的领域，其中包括样条函数理论和滤波分析。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_006",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "这是一次转型，必然会遇到我所陌生的东西。可无论研究什么，我都应当充分运用我原有的东西，让研究能落在实处。",
+          "portraitRef": "pan/middle/focused",
+          "effectRef": "cg:pan/common/review_materials",
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_007",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我会尽我所能。毕竟，如果接下来投入了时间却一事无成，那真的太不值了。我希望能改变些什么。",
+          "portraitRef": "pan/middle/determined",
+          "effectRef": null,
+          "orderIndex": 6,
+          "condition": null
+        },
+        {
+          "code": "pan_b1_008",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你在应用方面的研究，把扎实的数学功底用于解决当时国家需求和工程挑战的具体问题，体现了一种“将论文写在祖国大地上”的学术胸怀。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 7,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_c_act1",
+      "type": "normal",
+      "title": "第一幕 C线：兼修并进",
+      "entry": false,
+      "progressPercent": 25,
+      "backgroundRef": "pan/act1/office",
+      "cgRef": "pan/act1/write_letter",
+      "nextNodeCode": "pan_c_act2",
+      "lines": [
+        {
+          "code": "pan_c1_001",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "……这部分证明我已有了思路，按照我先前的研究，θ当是要取到1/3的……",
+          "portraitRef": "pan/young/focused",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_c1_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "如此往下，若我所想的确准确无误，c的值便可缩减到5。努力了这么些年，终于是再有突破了。写封信给王元兄罢。",
+          "portraitRef": "pan/young/pleased",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_c1_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你将“1+5”的初步证明思路写信给了师兄王元，但得到的是对方的反驳。自此，你们开始了长达数月、累计60多封的长信论战。最终，王元被你的严密论证说服。1963年，你又证明了“1+4”；1966年，陈景润证明了“1+2”。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_c1_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "然而形势变化，同国内许多学者一样，你的理论研究工作受到冲击，一度无法正常进行。你决定顺应形势，将研究转向应用方向。",
+          "portraitRef": null,
+          "effectRef": "scene:pan/act1/office",
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_c1_005",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "唉……真是……我果然是放不下的，毕竟数论是那样令人着迷。可做研究的，的确也该讲究现实意义……",
+          "portraitRef": "pan/middle/thinking",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_c1_006",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "但谁又知道呢？谁又能肯定数论在未来不会发挥其价值呢？我是不会放弃的。当然，应用方向的研究工作我也会做好。",
+          "portraitRef": "pan/middle/determined",
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "pan_c1_007",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1970年前后，你的研究领域扩展到了样条插值及其应用和滤波分析及其应用等方面。你的工作为后来者将样条函数应用于环境工程等具体领域提供了理论基础和方法参考。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 6,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_a_act2",
+      "type": "normal",
+      "title": "第二幕 A线：数论与密码",
+      "entry": false,
+      "progressPercent": 50,
+      "backgroundRef": "pan/prologue/campus_road",
+      "cgRef": null,
+      "nextNodeCode": "pan_a_route_end",
+      "lines": [
+        {
+          "code": "pan_a2_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "在山东大学任教多年，你从助教成为教授，之后又先后担任山东大学数学系主任、数学研究所所长、山东大学副校长。1986年底，你被任命为山东大学校长。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "秉持着对数学赤诚的热爱，这些年你在理论研究和数学应用领域都作出了许多贡献，获得多项奖项和荣誉；你的课堂趣味盎然、引人入胜，也得到了众多学生的喜爱。但这些并不会使你停下脚步。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_003",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我已经研究了许多年的数论，但是似乎还没有太多实质性的应用……一项研究，如若没有实用价值，那么为之投入如此之多的意义又何在呢……",
+          "portraitRef": "pan/middle/thinking",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_004",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "数论，数论，倘若只能是一项智力游戏，真的就太可惜了……现在已经有人在使用计算机推进数论研究，那么，数论的研究成果是否能反过来应用到计算机领域呢？这或许是个思路，值得一试！",
+          "portraitRef": "pan/middle/inspired",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你敏锐地捕捉到计算机技术带来的质变：数论中大整数分解这类“难到几乎不可能计算”的问题，恰好可以用于设计几乎无法被破解的密码。二十世纪八十年代中后期，网络信息安全的重要性日益凸显，你意识到中国必须培养自己的密码人才。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "于是，你力排众议，和于秀源、展涛等老师在山东大学数学系成立密码小组。你虽不研究密码，也会为学生提供参考文献；学生们的论文哪怕包含你的关键思想，你也从不署名。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_007",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "数论功底扎实，而且对数字规律很敏感……小云很适合密码学这个新方向。如果能转来密码学，那可就太好了。也跟秀源聊聊，他一定也这么认为。",
+          "portraitRef": "pan/middle/pleased",
+          "effectRef": "cg:pan/common/review_student_materials",
+          "orderIndex": 6,
+          "condition": null
+        },
+        {
+          "code": "pan_a2_008",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王小云听从你和于秀源两位导师的建议，由解析数论转向当时国内鲜有人涉足的密码学研究，后来攻克了MD5和SHA-1两大国际密码标准。此后，你又亲自挑选李大兴，主攻数论在密码学中的应用；他后来带领团队设计出中国第一款经国家密码管理局鉴定的商用PKI密码机。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 7,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_b_act2",
+      "type": "normal",
+      "title": "第二幕 B线：应用开花",
+      "entry": false,
+      "progressPercent": 50,
+      "backgroundRef": "pan/act2/office",
+      "cgRef": null,
+      "nextNodeCode": "pan_b_route_end",
+      "lines": [
+        {
+          "code": "pan_b2_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "由于先前将研究转向应用方向，这段时间你的研究工作进行得相对顺畅。1973年，你在《科学通报》发表《数字滤波的一种递推估计》，为雷达跟踪等场景中的实时跟踪问题提供数学模型支撑。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1975年，你又发表《Spline函数的理论及其应用（二）》，指出实际应用中高次样条函数计算复杂，应重点研究并推广计算简单且足够光滑的三次样条函数。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1983年，你因肠癌住院动手术。术后不久，你躺在病床上悄悄让学生从图书馆借来数学书，结果被护士发现并严厉批评。1986年，你出任山东大学校长。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_004",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "时代发展，技术进步，真是日新月异啊……这些年，计算机也跑起来了。我研究的这些东西能成功应用到密码系统中发挥其价值，真是太好了。",
+          "portraitRef": "pan/middle/pleased",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_005",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "对了，密码学……从前我一直为数论难有实际应用感到遗憾，这或许是个突破口。",
+          "portraitRef": "pan/middle/inspired",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你意识到中国必须培养自己的密码人才，于是力排众议，和于秀源、展涛等老师成立密码小组。你为学生提供后来被证明是现代公钥密码学构建基石的参考文献；学生论文即使包含你的关键思想，你也从不署名。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_007",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "数论功底扎实，而且对数字规律很敏感……小云很适合密码学这个新方向。如果能转来密码学，那可就太好了。也跟秀源聊聊，他一定也这么认为。",
+          "portraitRef": "pan/middle/pleased",
+          "effectRef": "cg:pan/common/review_student_materials",
+          "orderIndex": 6,
+          "condition": null
+        },
+        {
+          "code": "pan_b2_008",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王小云听从你和于秀源两位导师的建议，由解析数论转向密码学研究，后来攻克了MD5和SHA-1两大国际密码标准。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 7,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_c_act2",
+      "type": "normal",
+      "title": "第二幕 C线：融会贯通",
+      "entry": false,
+      "progressPercent": 50,
+      "backgroundRef": "pan/prologue/campus_road",
+      "cgRef": null,
+      "nextNodeCode": "pan_c_route_end",
+      "lines": [
+        {
+          "code": "pan_c2_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1973年，你发表《数字滤波的一种递推估计》，为雷达跟踪等场景下的实时跟踪问题提供数学模型支撑。1975年，你又发表《Spline函数的理论及其应用（二）》，主张重点研究和推广三次样条函数。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_c2_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1978年，于秀源报考山东大学研究生。他虽脱离学术圈多年，但你看到他在逆境中坚持求学的可贵品质，将他招至门下，指导他攻读解析数论。1980年，于秀源因学业优异提前毕业；1983年，他成为新中国首批18位博士之一。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_c2_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "同年，你因肠癌住院动手术。术后不久，你躺在病床上悄悄让学生从图书馆借来数学书，结果被护士发现并严厉批评。1986年，你出任山东大学校长。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_c2_004",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "我在应用方面也工作了许多年了，但我的确未曾放下数论。新的事物总会带来新的可能，关键在于我们能否融会贯通，发现这些可能。",
+          "portraitRef": "pan/middle/inspired",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_c2_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你敏锐地捕捉到计算机技术带来的质变，意识到中国必须培养自己的密码人才，于是力排众议，和于秀源、展涛等老师成立密码小组。这次极具前瞻性的战略布局，为中国信息安全领域铺设了底层理论基石。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "pan_c2_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1989年，刘建亚考入山东大学，成为你的研究生。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_a_route_end",
+      "type": "route_end",
+      "title": "第三幕 A线：薪火相传",
+      "entry": false,
+      "progressPercent": 80,
+      "backgroundRef": "pan/act3/montage",
+      "cgRef": "pan/act3/sdu_gate_1961",
+      "nextNodeCode": "pan_epilogue",
+      "lines": [
+        {
+          "code": "pan_a3_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你的身体状况并不好，曾在1983年因肠癌住院动手术。进入九十年代，你依然奋战在教育一线。",
+          "portraitRef": null,
+          "effectRef": "montage:start",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_a3_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "此前你已有多项独立或与他人合著的教材与基础读物。你与胞弟潘承彪再度合作，出版《解析数论基础》《初等数学》等著作，为中国数论学科的发展和人才培养奠定了重要基础。",
+          "portraitRef": null,
+          "effectRef": "cg:pan/act1/write_letter",
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_a3_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你总是想方设法让尽可能多、尽可能年轻的人才脱颖而出。1992年底，你主持制定“破格教授”政策，提拔年轻教师；他们后来大多成为各自领域的佼佼者。",
+          "portraitRef": null,
+          "effectRef": "cg:pan/common/review_student_materials",
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_a3_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1994年，你再一次因肠癌住院动手术。1997年12月27日，你在济南病逝。",
+          "portraitRef": null,
+          "effectRef": "cg:pan/act3/elder_pan",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_b_route_end",
+      "type": "route_end",
+      "title": "第三幕 B线：识才育才",
+      "entry": false,
+      "progressPercent": 80,
+      "backgroundRef": "pan/act3/office",
+      "cgRef": "pan/common/review_student_materials",
+      "nextNodeCode": "pan_epilogue",
+      "lines": [
+        {
+          "code": "pan_b3_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "在王小云之后，你又注意到另一棵“好苗子”。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_b3_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "李大兴……本科读的航海，硕士读的计算机……虽然并非纯数学出身，但他有数论基础又懂计算机，这可是搞数学和密码跨界研究的好人选啊！",
+          "portraitRef": "pan/elder/pleased",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_b3_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你对人才向来十分看重，总是想方设法让尽可能多、尽可能年轻的人才脱颖而出。1991年，李大兴师从你攻读博士学位。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_b3_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1992年底，你主持制定“破格教授”政策。1994年，李大兴获得博士学位，毕业即破格晋升为教授，两年后成为博士生导师。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_b3_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "同年，你再一次因肠癌住院动手术，术后恢复得不错。1997年12月27日，你在济南病逝。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_c_route_end",
+      "type": "route_end",
+      "title": "第三幕 C线：后继有人",
+      "entry": false,
+      "progressPercent": 80,
+      "backgroundRef": "pan/act3/office",
+      "cgRef": "pan/common/review_student_materials",
+      "nextNodeCode": "pan_epilogue",
+      "lines": [
+        {
+          "code": "pan_c3_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "刘建亚硕士毕业后，继续跟随你攻读博士。他的博士课题是“小区间非线性素数分布”，这是一个前人已经研究、但基本问题近六十年未能彻底解决的难题。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_c3_002",
+          "lineType": "dialogue",
+          "speaker": "潘承洞",
+          "content": "不错，建亚已经取得了新的进展，这很不容易，但还不够……还要取得更大进步。",
+          "portraitRef": "pan/elder/serious",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_c3_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你的话鞭策着刘建亚日以继夜地钻研，甚至专门学习俄文文献。经过艰苦攻关，他最终解决了这个困扰学界数十年的难题。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_c3_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1995年的博士论文答辩会上，一向严格的你评价道：“这个问题很难，我跟陈景润年轻的时候都没做出来。他能做出来非常好。”为人师者，看到学术后继有人，你感到很欣慰。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "pan_c3_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "博士毕业后，刘建亚赴香港大学从事博士后研究，继续攻克“盖拉格问题”等前沿难题。1997年12月27日，你在济南病逝。",
+          "portraitRef": null,
+          "effectRef": "overlay:center_text_dark",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    },
+    {
+      "code": "pan_epilogue",
+      "type": "chapter_end",
+      "title": "尾声：梦醒齐园",
+      "entry": false,
+      "progressPercent": 100,
+      "backgroundRef": "pan/prologue/qiyuan_restaurant",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "pan_epilogue_001",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "闭上眼睛，画面进入黑暗并短暂停顿，随后迷迷糊糊地睁开眼睛。",
+          "portraitRef": null,
+          "effectRef": "transition:dream_wake",
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_002",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "……",
+          "portraitRef": "protagonist/confused",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "这时队伍刚好排到你，于是你走上前。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_food_noodles",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "你好，要一份拌面。",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": {
+            "requiredChoiceCode": "pan_food_noodles"
+          }
+        },
+        {
+          "code": "pan_epilogue_food_wrap",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "你好，要一份卷饼。",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": {
+            "requiredChoiceCode": "pan_food_wrap"
+          }
+        },
+        {
+          "code": "pan_epilogue_food_home_cooking",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "你好，要一份家常菜。",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": {
+            "requiredChoiceCode": "pan_food_home_cooking"
+          }
+        },
+        {
+          "code": "pan_epilogue_food_bun_congee",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "你好，要一份包子和粥。",
+          "portraitRef": "protagonist/normal",
+          "effectRef": null,
+          "orderIndex": 6,
+          "condition": {
+            "requiredChoiceCode": "pan_food_bun_congee"
+          }
+        },
+        {
+          "code": "pan_epilogue_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你找了个位置坐下，开始吃午饭，心中的情绪还未平复，脑子里仍想着刚才的事情。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 7,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_005",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "脑子有些胀，好长的一个梦……在梦里，我居然成了潘承洞先生吗……",
+          "portraitRef": "protagonist/thinking",
+          "effectRef": null,
+          "orderIndex": 8,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_006",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "虽然跟我所了解过的故事不太一样，但或许因为都是“潘承洞先生”，所以无论我的选择与潘承洞先生是否一致，最后走向的结局也会与真实历史的性质相似……因为那就是潘承洞……",
+          "portraitRef": "protagonist/thinking",
+          "effectRef": null,
+          "orderIndex": 9,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_007",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "可感觉经历了那么多，似乎也不过是揭开了有关潘承洞先生的冰山一角。他曾做了那么多，而我平时能了解到的其实只有那么几个短短的陈述句……",
+          "portraitRef": "protagonist/thinking",
+          "effectRef": null,
+          "orderIndex": 10,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_008",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "周围许多人在聊天，某些字眼进入耳中，引起了你的注意。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 11,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_009",
+          "lineType": "dialogue",
+          "speaker": "学生A",
+          "content": "哎，我高中同学在软件园校区的，说他们多了个密码学院。",
+          "portraitRef": "student/a",
+          "effectRef": null,
+          "orderIndex": 12,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_010",
+          "lineType": "dialogue",
+          "speaker": "学生B",
+          "content": "哦对，我也听说了。话说他们有什么专业吗？",
+          "portraitRef": "student/b",
+          "effectRef": null,
+          "orderIndex": 13,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_011",
+          "lineType": "dialogue",
+          "speaker": "学生A",
+          "content": "好像是叫密码科学与技术，说是有一部分是强基的，还有一部分是叫……",
+          "portraitRef": "student/a",
+          "effectRef": null,
+          "orderIndex": 14,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_012",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "……",
+          "portraitRef": "protagonist/listening",
+          "effectRef": null,
+          "orderIndex": 15,
+          "condition": null
+        },
+        {
+          "code": "pan_epilogue_013",
+          "lineType": "dialogue",
+          "speaker": "学生A",
+          "content": "潘承洞密码班。",
+          "portraitRef": "student/a",
+          "effectRef": "ending:pan_chengdong_complete",
+          "orderIndex": 16,
+          "condition": null
+        }
+      ],
+      "choices": [],
+      "showInStoryline": true
+    }
+  ]
+}

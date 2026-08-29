@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.sdu.storygame.mapper.StoryLineMapper">
+
+    <!--
+        查询当前存档在指定节点中实际可见的台词。
+
+        required_choice_code 为 null：
+        - 无条件台词，始终返回。
+
+        required_choice_code 不为 null：
+        - 当前存档的有效路径中，必须存在对应 choice_code；
+        - 回溯后已经失效的旧分支不会参与条件判断。
+    -->
+    <select id="selectVisibleLines"
+            resultType="edu.sdu.storygame.data.po.StoryLine">
+
+        SELECT sl.id,
+        sl.node_id,
+        sl.line_type,
+        sl.speaker,
+        sl.content,
+        sl.portrait_ref,
+        sl.effect_ref,
+        sl.required_choice_code,
+        sl.order_index
+        FROM story_line sl
+        WHERE sl.node_id = #{nodeId}
+        AND (
+        sl.required_choice_code IS NULL
+        OR EXISTS (
+        SELECT 1
+        FROM save_path sp
+        INNER JOIN story_choice sc
+        ON sc.id = sp.choice_id
+        WHERE sp.save_id = #{saveId}
+        AND sp.is_active = 1
+        AND sc.choice_code =
+        sl.required_choice_code
+        )
+        )
+        ORDER BY sl.order_index ASC,
+        sl.id ASC
+
+    </select>
+
+</mapper>

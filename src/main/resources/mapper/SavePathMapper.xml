@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.sdu.storygame.mapper.SavePathMapper">
+
+    <resultMap id="storyPathNodeVOResultMap"
+               type="edu.sdu.storygame.data.vo.StoryPathNodeVO">
+
+        <constructor>
+            <idArg column="path_id"
+                   javaType="java.lang.Long"/>
+
+            <arg column="step_index"
+                 javaType="java.lang.Integer"/>
+
+            <arg column="node_id"
+                 javaType="java.lang.Long"/>
+
+            <arg column="node_code"
+                 javaType="java.lang.String"/>
+
+            <arg column="node_type"
+                 javaType="java.lang.String"/>
+
+            <arg column="node_title"
+                 javaType="java.lang.String"/>
+
+            <arg column="progress_percent"
+                 javaType="java.lang.Integer"/>
+
+            <arg column="choice_code"
+                 javaType="java.lang.String"/>
+
+            <arg column="choice_text"
+                 javaType="java.lang.String"/>
+
+            <arg column="visited_at"
+                 javaType="java.time.LocalDateTime"/>
+
+            <arg column="is_current"
+                 javaType="java.lang.Boolean"/>
+        </constructor>
+
+    </resultMap>
+
+    <select id="selectStoryPathNodes"
+            resultMap="storyPathNodeVOResultMap">
+
+        SELECT sp.id AS path_id,
+        sp.step_index,
+        sn.id AS node_id,
+        sn.node_code,
+        sn.node_type,
+        sn.title AS node_title,
+        sn.progress_percent,
+        sc.choice_code,
+        sc.choice_text,
+        sp.visited_at,
+        CASE
+        WHEN sp.id = #{currentPathId} THEN 1
+        ELSE 0
+        END AS is_current
+        FROM save_path sp
+        INNER JOIN story_node sn
+        ON sn.id = sp.node_id
+        LEFT JOIN story_choice sc
+        ON sc.id = sp.choice_id
+        WHERE sp.save_id = #{saveId}
+        AND sp.is_active = 1
+        AND (
+        sn.show_in_storyline = 1
+        OR sp.id = #{currentPathId}
+        )
+        ORDER BY sp.step_index ASC,
+        sp.id ASC
+
+    </select>
+
+</mapper>

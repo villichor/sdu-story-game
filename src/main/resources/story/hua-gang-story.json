@@ -1,0 +1,1325 @@
+{
+  "schemaVersion": 1,
+  "chapter": {
+    "code": "hua_gang",
+    "title": "华岗——百年山大",
+    "theme": "融合、学术与担当",
+    "characterName": "华岗",
+    "orderIndex": 2
+  },
+  "achievements": [
+    {
+      "code": "hua_gang_complete",
+      "name": "山高水长",
+      "description": "完成华岗人物故事",
+      "icon": "🏆",
+      "type": "chapter",
+      "souvenir": "时代笔记",
+      "triggerType": "chapter_completed",
+      "triggerNodeCode": "hua_epilogue"
+    }
+  ],
+  "nodes": [
+    {
+      "code": "hua_prologue",
+      "type": "normal",
+      "title": "序幕：翻开的相册",
+      "entry": true,
+      "showInStoryline": true,
+      "progressPercent": 0,
+      "backgroundRef": "hua/prologue/modern_room",
+      "cgRef": null,
+      "nextNodeCode": "hua_letter",
+      "lines": [
+        {
+          "code": "hua_prologue_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "午后的阳光落在书架上。你从一只旧木箱里取出一本边角磨损的相册。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_prologue_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "相册扉页写着一行已经褪色的小字：一九五一年，青岛。",
+          "portraitRef": null,
+          "effectRef": "cg:hua/prologue/photo_album",
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_prologue_003",
+          "lineType": "dialogue",
+          "speaker": "主角",
+          "content": "照片里的人是谁？这座红楼……又在哪里见过？",
+          "portraitRef": "protagonist/thinking",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_prologue_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "指尖触到照片的一刻，海风与蝉鸣忽然从纸页深处涌来。",
+          "portraitRef": null,
+          "effectRef": "transition:memory_enter",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_letter",
+      "type": "normal",
+      "title": "第一幕：跨越千里的通知书",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 5,
+      "backgroundRef": "hua/act1/home_1951",
+      "cgRef": "hua/act1/admission_letter",
+      "nextNodeCode": "hua_dorm",
+      "lines": [
+        {
+          "code": "hua_letter_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1951年初春。你展开那封带着淡淡墨香的录取通知书，信封上端端正正印着“录取通知书”五个字。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_letter_002",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "山东大学，青岛……真的要离开家了。",
+          "portraitRef": "hua/protagonist/young_normal",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_letter_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你将通知书仔细折好，贴身放进口袋。你知道，从这一刻起，人生将与那座海滨城市、与一所正在经历伟大变革的大学紧紧相连。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_letter_004",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "列车向东，窗外的土地不断退去，海风渐渐有了咸湿的气息。",
+          "portraitRef": null,
+          "effectRef": "transition:train_to_qingdao",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_dorm",
+      "type": "normal",
+      "title": "第一幕：红楼里的新居",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 10,
+      "backgroundRef": "hua/act1/red_building_dorm",
+      "cgRef": null,
+      "nextNodeCode": "hua_ceremony_meet",
+      "lines": [
+        {
+          "code": "hua_dorm_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "几天后，你背着简单的行囊来到青岛。鱼山路上的老校舍古木参天，红楼掩映。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_dorm_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "宿舍里是一张硬板床和一张斑驳的旧书桌，空气中混着旧木头与淡淡霉味。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_dorm_003",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "整理行囊：铺好粗布床单，放稳搪瓷茶缸，将钢笔、笔记本和旧书摆上桌面。",
+          "portraitRef": null,
+          "effectRef": "minigame:hua/organize_luggage",
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_dorm_004",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "床板虽然硬，总比从前漏雨的土炕强。把床铺平，今晚就能伴着海浪声入睡。",
+          "portraitRef": "hua/protagonist/young_pleased",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "hua_dorm_005",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "桌子再旧，擦干净了就是我的阵地。笔墨要备齐，教授们讲的每一句都不能错过。",
+          "portraitRef": "hua/protagonist/young_determined",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "hua_dorm_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "夕阳透过吱呀作响的木窗棂，给斑驳的墙壁镀上金边。简陋的房间里，正生长着蓬勃的新生活。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "hua_dorm_007",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "夜幕即将降临。明天，就是开学典礼暨合校成功庆祝大会。",
+          "portraitRef": null,
+          "effectRef": "overlay:date_1951_03_18",
+          "orderIndex": 6,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_ceremony_meet",
+      "type": "normal",
+      "title": "第二幕：会场外的相遇",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 18,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_ceremony_meet_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1951年3月19日。广场上黑压压全是人，你抱着笔记本，在人潮里焦急地寻找会场。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_meet_002",
+          "lineType": "dialogue",
+          "speaker": "短发大姐",
+          "content": "大妹子，前面搭台子那儿是会场不？",
+          "portraitRef": "hua/veteran/curious",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_meet_003",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "大姐，我也在找路呢。",
+          "portraitRef": "hua/protagonist/young_embarrassed",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_meet_004",
+          "lineType": "dialogue",
+          "speaker": "短发大姐",
+          "content": "哎呀，敢情咱俩一样！",
+          "portraitRef": "hua/veteran/laughing",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_meet_005",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "她后颈有一道浅色旧疤，褪色红绳束着短发，站姿里藏着一种经受过风雪的坚定。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_ask_veteran_origin",
+          "text": "“您是从哪里来的呀？”",
+          "effect": "remember:contact=veteran",
+          "toNodeCode": "hua_after_veteran",
+          "orderIndex": 0
+        },
+        {
+          "code": "hua_keep_silent_veteran",
+          "text": "保持沉默，只替她指一指人群",
+          "effect": "remember:contact=quiet",
+          "toNodeCode": "hua_after_silence",
+          "orderIndex": 1
+        }
+      ]
+    },
+    {
+      "code": "hua_after_veteran",
+      "type": "normal",
+      "title": "第二幕：战场归来的同学",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 22,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": "hua_senior_choice_after_ask",
+      "lines": [
+        {
+          "code": "hua_after_veteran_001",
+          "lineType": "dialogue",
+          "speaker": "短发大姐",
+          "content": "刚从朝鲜战场退下来呢！国家让俺来念大学，俺还怕走错门呢！",
+          "portraitRef": "hua/veteran/proud",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_after_veteran_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你第一次如此真切地意识到，广场上的每一张年轻面孔，背后都可能站着一段惊心动魄的时代。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_after_veteran_003",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "你把她的故事郑重记在笔记本上。",
+          "portraitRef": null,
+          "effectRef": "collection:hua/veteran_student",
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_after_silence",
+      "type": "normal",
+      "title": "第二幕：擦肩而过",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 22,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": "hua_senior_choice_after_quiet",
+      "lines": [
+        {
+          "code": "hua_after_silence_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你迟疑着没有追问。短发大姐爽朗地道了声谢，很快汇入人潮。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_after_silence_002",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "有些故事若不开口，也许就会这样从身边走过去。",
+          "portraitRef": "hua/protagonist/young_thinking",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_senior_choice_after_ask",
+      "type": "normal",
+      "title": "第二幕：华大学长",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 26,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_senior_choice_after_ask_001",
+          "lineType": "dialogue",
+          "speaker": "眼镜男生",
+          "content": "顺着这条路一直往前走，就是会场。",
+          "portraitRef": "hua/senior/normal",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_senior_choice_after_ask_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "他穿着洗得发白的蓝布褂子，站姿挺拔，眼神沉静，气质不像刚入学的新生。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_ask_senior_after_veteran",
+          "text": "问他是不是刚来报到",
+          "effect": "remember:contact=senior",
+          "toNodeCode": "hua_hidden_marker",
+          "orderIndex": 0
+        },
+        {
+          "code": "hua_leave_senior_after_veteran",
+          "text": "点头致谢，不再追问",
+          "effect": "remember:contact=observer",
+          "toNodeCode": "hua_ceremony_speech",
+          "orderIndex": 1
+        }
+      ]
+    },
+    {
+      "code": "hua_senior_choice_after_quiet",
+      "type": "normal",
+      "title": "第二幕：华大学长",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 26,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_senior_choice_after_quiet_001",
+          "lineType": "dialogue",
+          "speaker": "眼镜男生",
+          "content": "顺着这条路一直往前走，就是会场。",
+          "portraitRef": "hua/senior/normal",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_senior_choice_after_quiet_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "他穿着洗得发白的蓝布褂子，站姿挺拔，眼神沉静，气质不像刚入学的新生。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_ask_senior_after_quiet",
+          "text": "问他是不是刚来报到",
+          "effect": "remember:contact=senior",
+          "toNodeCode": "hua_senior_answer",
+          "orderIndex": 0
+        },
+        {
+          "code": "hua_leave_senior_after_quiet",
+          "text": "点头致谢，不再追问",
+          "effect": "remember:contact=observer",
+          "toNodeCode": "hua_ceremony_speech",
+          "orderIndex": 1
+        }
+      ]
+    },
+    {
+      "code": "hua_senior_answer",
+      "type": "normal",
+      "title": "第二幕：两校会师",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 29,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": "hua_ceremony_speech",
+      "lines": [
+        {
+          "code": "hua_senior_answer_001",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "同学，你也是刚来报到的吗？",
+          "portraitRef": "hua/protagonist/young_normal",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_senior_answer_002",
+          "lineType": "dialogue",
+          "speaker": "眼镜男生",
+          "content": "我不算新生了。我从华东大学合并过来，这次一千多名师生一起迁到了青岛。",
+          "portraitRef": "hua/senior/pleased",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_senior_answer_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你望向会场。原来眼前的人潮，不只是一次开学，更是两支教育队伍的会师。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_hidden_marker",
+      "type": "normal",
+      "title": "第二幕：主动倾听",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 29,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_hidden_marker_001",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "同学，你也是刚来报到的吗？",
+          "portraitRef": "hua/protagonist/young_normal",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_hidden_marker_002",
+          "lineType": "dialogue",
+          "speaker": "眼镜男生",
+          "content": "我从华东大学合并过来，一千多名师生一起迁到了青岛。大家都在学着成为“新山大”的一员。",
+          "portraitRef": "hua/senior/pleased",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_hidden_marker_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你把短发大姐与华大学长的故事并排记下。主动询问，让两段原本沉默的历史在纸上相遇。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_hidden_eligible",
+          "text": "合上笔记本，走进会场",
+          "effect": "remember:hidden=eligible",
+          "toNodeCode": "hua_ceremony_speech",
+          "orderIndex": 0
+        }
+      ]
+    },
+    {
+      "code": "hua_ceremony_speech",
+      "type": "normal",
+      "title": "第二幕：新山大的前途",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 34,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": "hua/act2/hua_gang_speech",
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_ceremony_speech_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "广场突然爆发出热烈的欢呼。新任校长华岗走上讲台，灰色干部服朴素整洁，黑框眼镜后的目光温和而坚毅。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_speech_002",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "同学们，老师们！把原有华东大学和原有山东大学合并，是中国高等教育史上的创举！",
+          "portraitRef": "hua/hua_gang/speaking",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_speech_003",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "各取所长，补己之短。这决不仅仅是数量的加多，更要促进质量的变化和增强！",
+          "portraitRef": "hua/hua_gang/determined",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_speech_004",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "合校要事理兼顾、舍异求同。我们新山大的前途，在座的每一位都有责任！",
+          "portraitRef": "hua/hua_gang/determined",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_speech_005",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "我们要向着新型的、正规的人民大学去发展！",
+          "portraitRef": "hua/hua_gang/speaking",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "hua_ceremony_speech_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "掌声如潮。你看着台上的校长，又看看身边一张张朝气蓬勃的脸，心中涌起一种从未有过的使命感。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_mind_mission",
+          "text": "握紧拳头：把个人命运融入时代洪流",
+          "effect": "remember:mind=mission",
+          "toNodeCode": "hua_mission_reflection",
+          "orderIndex": 0
+        },
+        {
+          "code": "hua_mind_writer",
+          "text": "拿出笔记本：做记录时代的读书人",
+          "effect": "remember:mind=writer",
+          "toNodeCode": "hua_writer_reflection",
+          "orderIndex": 1
+        }
+      ]
+    },
+    {
+      "code": "hua_mission_reflection",
+      "type": "normal",
+      "title": "第二幕：时代先锋",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 38,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": "hua_wenshizhe_office",
+      "lines": [
+        {
+          "code": "hua_mission_reflection_001",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "为了新中国的建设，也为了新山大的前途。",
+          "portraitRef": "hua/protagonist/young_determined",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_mission_reflection_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你第一次感到，个人的道路可以与一所大学、一个时代的道路紧紧相连。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_writer_reflection",
+      "type": "normal",
+      "title": "第二幕：时代的笔记",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 38,
+      "backgroundRef": "hua/act2/ceremony_square",
+      "cgRef": null,
+      "nextNodeCode": "hua_wenshizhe_office",
+      "lines": [
+        {
+          "code": "hua_writer_reflection_001",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "事理兼顾，舍异求同。做新时代的读书人。",
+          "portraitRef": "hua/protagonist/young_focused",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_writer_reflection_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "墨迹还未干，讲台上的声音已经成为你此后许多年反复翻阅的一页。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_wenshizhe_office",
+      "type": "normal",
+      "title": "第三幕：《文史哲》的灯火",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 46,
+      "backgroundRef": "hua/act3/literature_office",
+      "cgRef": null,
+      "nextNodeCode": "hua_wenshizhe_canteen",
+      "lines": [
+        {
+          "code": "hua_wenshizhe_office_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1951年春，合校大会后的一个傍晚。你抱着作业本走过文学院二楼，半掩的办公室里传来争论和算盘珠的脆响。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_office_002",
+          "lineType": "dialogue",
+          "speaker": "老教授",
+          "content": "老华啊，纸张报价又涨了。办这样一本大刊物，印刷费就是个无底洞。",
+          "portraitRef": "hua/professor/worried",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_office_003",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "难处我知道。但越是这个时候，越要把新中国自己的学术阵地建起来。",
+          "portraitRef": "hua/hua_gang/serious",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_office_004",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "经费我来想办法，大家手头宽裕就凑一凑。稿子靠我们自己写，不计稿酬。",
+          "portraitRef": "hua/hua_gang/determined",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_office_005",
+          "lineType": "dialogue",
+          "speaker": "另一位老师",
+          "content": "没有刊号，不能通过邮局发行，创刊以后又怎么送到读者手里？",
+          "portraitRef": "hua/professor/thinking",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_office_006",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "先寄给全国各大学的朋友代售。路是走出来的，学术阵地也一样。",
+          "portraitRef": "hua/hua_gang/pleased",
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_office_007",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "桌上堆满稿纸，搪瓷茶缸旁只有一盏昏黄的灯。你忽然明白，一本刊物的诞生也可以像一场艰苦的建设。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 6,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_wenshizhe_canteen",
+      "type": "normal",
+      "title": "第三幕：为创刊添一把柴",
+      "entry": false,
+      "showInStoryline": false,
+      "progressPercent": 52,
+      "backgroundRef": "hua/act3/canteen",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_wenshizhe_canteen_001",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "听说学校要把《山大生活》办成大型学术刊物，名字就叫《文史哲》。",
+          "portraitRef": "hua/protagonist/young_thinking",
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_canteen_002",
+          "lineType": "dialogue",
+          "speaker": "室友",
+          "content": "可经费紧，连发行都要请全国各大学的朋友帮忙。现在办刊，真是硬着头皮往前走。",
+          "portraitRef": "hua/roommate/worried",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_canteen_003",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "万事开头难。我们也该为它添把柴。",
+          "portraitRef": "hua/protagonist/young_determined",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_wenshizhe_canteen_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你望着饭盆里渐渐凉下来的饭，思考自己能做什么。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_publish_write",
+          "text": "熬夜写稿，尝试投稿",
+          "effect": "route=write",
+          "toNodeCode": "hua_publish_write_result",
+          "orderIndex": 0
+        },
+        {
+          "code": "hua_publish_edit",
+          "text": "帮助校对稿件和排版",
+          "effect": "route=edit",
+          "toNodeCode": "hua_publish_edit_result",
+          "orderIndex": 1
+        },
+        {
+          "code": "hua_publish_invite",
+          "text": "拜访名家，邀请赐稿",
+          "effect": "route=invite",
+          "toNodeCode": "hua_publish_invite_result",
+          "orderIndex": 2
+        }
+      ]
+    },
+    {
+      "code": "hua_publish_write_result",
+      "type": "normal",
+      "title": "第三幕：以笔为炬",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 61,
+      "backgroundRef": "hua/act3/night_desk",
+      "cgRef": "hua/act3/hua_gang_editing",
+      "nextNodeCode": "hua_storm",
+      "lines": [
+        {
+          "code": "hua_publish_write_result_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你借着台灯，把对新中国社会变革的思考一页页写下。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_write_result_002",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "文章有锐气，但不要只停在理论上。把现实写进去，它才站得住。",
+          "portraitRef": "hua/hua_gang/teaching",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_write_result_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "他在烟盒纸上写下修改提纲，边写边讲。数日后，你修改过的文章进入创刊号。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_write_result_004",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "你见证了青年学人与新中国学术刊物共同成长的开端。",
+          "portraitRef": null,
+          "effectRef": "collection:hua/young_scholar",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_publish_edit_result",
+      "type": "normal",
+      "title": "第三幕：共同的理想",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 61,
+      "backgroundRef": "hua/act3/printing_room",
+      "cgRef": "hua/act3/shared_ideal",
+      "nextNodeCode": "hua_storm",
+      "lines": [
+        {
+          "code": "hua_publish_edit_result_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你挽起袖子，拿起红笔和铅字排版工具，默默坐到华岗身边。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_edit_result_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "深夜里只有纸张翻动的沙沙声、校对笔的划痕和铅字轻轻碰撞的声音。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_edit_result_003",
+          "lineType": "dialogue",
+          "speaker": "华岗",
+          "content": "学术不只是几个人的名声。把每个字放对位置，也是在给后来的人铺路。",
+          "portraitRef": "hua/hua_gang/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_edit_result_004",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "你收好那张写满修改意见的烟盒纸提纲。",
+          "portraitRef": null,
+          "effectRef": "collection:hua/cigarette_box_outline",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_publish_invite_result",
+      "type": "normal",
+      "title": "第三幕：群贤毕至",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 61,
+      "backgroundRef": "hua/act3/qingdao_street",
+      "cgRef": "hua/act3/scholars",
+      "nextNodeCode": "hua_storm",
+      "lines": [
+        {
+          "code": "hua_publish_invite_result_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你带着华岗的亲笔信，穿过青岛街巷，叩开一位位学者的门。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_invite_result_002",
+          "lineType": "dialogue",
+          "speaker": "老教授",
+          "content": "稿酬就免了。这本刊物若能立住，是大家的事情。",
+          "portraitRef": "hua/professor/pleased",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_invite_result_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "名家们拿出珍藏的手稿，有人还自掏腰包订下杂志。第一期《文史哲》由此走向全国。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_publish_invite_result_004",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "你见证了山大人文学术群星汇聚的景象。",
+          "portraitRef": null,
+          "effectRef": "collection:hua/scholars_gallery",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_storm",
+      "type": "normal",
+      "title": "第四幕：风雨中的选择",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 73,
+      "backgroundRef": "hua/act4/silent_campus",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_storm_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1955年，时代的风暴袭来。华岗因保护学校老师而受到牵连，被错误审查并长期关押。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_storm_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "校园骤然安静。曾经通宵亮灯的办公室落了锁，教授们说话时总会先看一眼门外。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_storm_003",
+          "lineType": "dialogue",
+          "speaker": "室友",
+          "content": "现在人人自危。我们只是学生，还能做什么？",
+          "portraitRef": "hua/roommate/afraid",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_storm_004",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "也许做不了惊天动地的事。但一本书、一份手稿、一堂课，总得有人守住。",
+          "portraitRef": "hua/protagonist/middle_serious",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "hua_ending_silence",
+          "text": "明哲保身，远离风暴",
+          "effect": "ending=silence",
+          "toNodeCode": "hua_silence_end",
+          "orderIndex": 0
+        },
+        {
+          "code": "hua_ending_pass_fire",
+          "text": "藏好书稿，让学术薪火继续",
+          "effect": "ending=pass_fire",
+          "toNodeCode": "hua_pass_fire_end",
+          "orderIndex": 1
+        }
+      ]
+    },
+    {
+      "code": "hua_silence_end",
+      "type": "route_end",
+      "title": "结局：随波而行",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 88,
+      "backgroundRef": "hua/act4/closed_library",
+      "cgRef": null,
+      "nextNodeCode": "hua_epilogue",
+      "lines": [
+        {
+          "code": "hua_silence_end_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你收起笔记，将精力转向与风暴无关的课程。日子得以平静，心里却始终留着一间没有再推开的办公室。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_silence_end_002",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "也许沉默能保护一个人，却无法替一段历史保存声音。",
+          "portraitRef": "hua/protagonist/elder_regretful",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_silence_end_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "多年后，你仍保存着那本时代笔记，只是其中几页一直空白。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_silence_end_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你曾主动听见两位同学的来路。风暴中，你也悄悄替先生们保存了几箱来不及转移的书。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": {
+            "requiredChoiceCode": "hua_hidden_eligible"
+          }
+        },
+        {
+          "code": "hua_silence_end_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "隐藏片段：无声的奔走。",
+          "portraitRef": null,
+          "effectRef": "cg:hua/act4/silent_running",
+          "orderIndex": 4,
+          "condition": {
+            "requiredChoiceCode": "hua_hidden_eligible"
+          }
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_pass_fire_end",
+      "type": "route_end",
+      "title": "结局：薪火相传",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 92,
+      "backgroundRef": "hua/act4/dormitory_class",
+      "cgRef": "hua/act4/hidden_manuscripts",
+      "nextNodeCode": "hua_epilogue",
+      "lines": [
+        {
+          "code": "hua_pass_fire_end_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你与同学把书稿分开放进旧箱子，藏在不引人注意的宿舍和库房里。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_pass_fire_end_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "老师就在宿舍里，用粉笔在床板上画图；学生坐在马扎上听，窗外的风一阵紧过一阵。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_pass_fire_end_003",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "风雨总会过去。只要还有人愿意讲、愿意听，这方讲台就不会消失。",
+          "portraitRef": "hua/protagonist/middle_determined",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_pass_fire_end_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你敲开后勤处老王的门，请他不要把先生们的书当废纸处理；又辗转替家属送去一句平安。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": {
+            "requiredChoiceCode": "hua_hidden_eligible"
+          }
+        },
+        {
+          "code": "hua_pass_fire_end_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "隐藏片段：无声的奔走。",
+          "portraitRef": null,
+          "effectRef": "cg:hua/act4/silent_running",
+          "orderIndex": 4,
+          "condition": {
+            "requiredChoiceCode": "hua_hidden_eligible"
+          }
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "hua_epilogue",
+      "type": "chapter_end",
+      "title": "尾声：历史会证明",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 100,
+      "backgroundRef": "hua/epilogue/modern_room",
+      "cgRef": "hua/epilogue/photo_album",
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "hua_epilogue_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1972年，华岗在狱中离世。他留给世界的话是：“历史会证明我是清白的。”",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "hua_epilogue_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "多年以后，那些在青山红楼间听课、在深夜灯下改稿的日子，已经成为山东大学珍贵的精神遗产。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "hua_epilogue_003",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "相册缓缓合上，海风远去，房间重新回到午后的宁静。",
+          "portraitRef": null,
+          "effectRef": "transition:memory_exit",
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "hua_epilogue_004",
+          "lineType": "dialogue",
+          "speaker": "孙女",
+          "content": "爷爷，这本相册里写的都是真的吗？",
+          "portraitRef": "hua/granddaughter/curious",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "hua_epilogue_005",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "是真的。那时候我们相信，一所大学的精神，要靠一代代人守下去。",
+          "portraitRef": "hua/protagonist/elder_pleased",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "hua_epilogue_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "云山苍苍，江水泱泱。先生之风，山高水长。",
+          "portraitRef": null,
+          "effectRef": "ending:hua_gang_complete",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    }
+  ]
+}

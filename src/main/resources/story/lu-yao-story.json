@@ -1,0 +1,1922 @@
+{
+  "schemaVersion": 1,
+  "chapter": {
+    "code": "lu_yao",
+    "title": "路遥——田野求真",
+    "theme": "求真、田野与人文关怀",
+    "characterName": "路遥",
+    "orderIndex": 3
+  },
+  "achievements": [
+    {
+      "code": "lu_yao_complete",
+      "name": "田野求真",
+      "description": "完成路遥人物故事",
+      "icon": "🏆",
+      "type": "chapter",
+      "souvenir": "田野调查笔记",
+      "triggerType": "chapter_completed",
+      "triggerNodeCode": "lu_epilogue"
+    }
+  ],
+  "nodes": [
+    {
+      "code": "lu_s01_campus",
+      "type": "normal",
+      "title": "第一幕：最后一课",
+      "entry": true,
+      "showInStoryline": true,
+      "progressPercent": 0,
+      "backgroundRef": "lu/s01/history_classroom",
+      "cgRef": null,
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "lu_s01_campus_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1960年1月，寒假前的最后一堂课。窗外北风卷过校园，黑板上只留下一个问题：义和团到底是怎么开始的？",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_s01_campus_002",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "近百名师生将分成十四组，前往鲁西南、鲁西北、冀南及豫皖苏三省三十个县。我们这一组要从村庄里寻找文献没有写下的答案。",
+          "portraitRef": "lu/lu_yao/serious",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_s01_campus_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "要查清从哪里开始、谁先发起、为何冲突、组织如何演变，也要听听当时的人究竟怎么想。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_s01_campus_004",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "田野没有标准答案。你准备怎样开始？",
+          "portraitRef": "lu/lu_yao/normal",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": [
+        {
+          "code": "lu_route_scholar",
+          "text": "带上县志和卡片，从文献疑点追起",
+          "effect": "route=scholar",
+          "toNodeCode": "lu_scholar_s02_departure",
+          "orderIndex": 0
+        },
+        {
+          "code": "lu_route_empathy",
+          "text": "先学会与乡亲相处，从人的故事听起",
+          "effect": "route=empathy",
+          "toNodeCode": "lu_empathy_s02_departure",
+          "orderIndex": 1
+        },
+        {
+          "code": "lu_route_practical",
+          "text": "检查设备和调查表，从证据采集做起",
+          "effect": "route=practical",
+          "toNodeCode": "lu_practical_s02_departure",
+          "orderIndex": 2
+        }
+      ]
+    },
+    {
+      "code": "lu_scholar_s02_departure",
+      "type": "normal",
+      "title": "第二幕：出发·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 8,
+      "backgroundRef": "lu/s02/jinan_station",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s03_map",
+      "lines": [
+        {
+          "code": "lu_scholar_s02_departure_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "天还没亮，调查队在济南站集合。帆布包、自行车和一摞调查提纲挤满车厢。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s02_departure_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你把《冠县志》和摘抄卡片压在包底，反复核对地名与年代。",
+          "portraitRef": "lu/protagonist/scholar",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s02_departure_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "路遥老师说，文献是地图，但不能把地图当成土地本身。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s02_departure_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "汽笛响起，城市慢慢退到身后。你们向冠县方向出发。",
+          "portraitRef": null,
+          "effectRef": "transition:train_to_field",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s03_map",
+      "type": "normal",
+      "title": "第三幕：冠县地图·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 16,
+      "backgroundRef": "lu/s03/county_map",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s04_clan_head",
+      "lines": [
+        {
+          "code": "lu_scholar_s03_map_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "县城招待所里，一张地图铺满小桌。十八村、梨园屯和旧庙址被铅笔线连在一起。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s03_map_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "地图上“梨园屯”三个字旁被你画了圈。你更关心旧县志里的地名是否与老人记忆相合。",
+          "portraitRef": "lu/protagonist/scholar",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s03_map_003",
+          "lineType": "dialogue",
+          "speaker": "调查队员",
+          "content": "明早先进村找族长，再分别寻访老人。一天的路可不短。",
+          "portraitRef": "lu/student/normal",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s03_map_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你们把干粮、笔记和设备分装好。窗外风声很紧，桌上的地图却逐渐有了方向。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s04_clan_head",
+      "type": "normal",
+      "title": "第四幕：老族长家·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 27,
+      "backgroundRef": "lu/s04/clan_head_courtyard",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s05_grandmother",
+      "lines": [
+        {
+          "code": "lu_scholar_s04_clan_head_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "土坯墙外堆着玉米秸，门楣上“姜太公在此”的红纸已经褪色。老族长倚着旱烟杆审视你们。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s04_clan_head_002",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "族谱记载赵三多何时来到这里？“义和拳”这个称呼最早出现在哪一页？",
+          "portraitRef": "lu/protagonist/scholar",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s04_clan_head_003",
+          "lineType": "dialogue",
+          "speaker": "老族长",
+          "content": "你这后生，看过书，都自有答案了，还问我做什么？",
+          "portraitRef": "lu/clan_head/serious",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s04_clan_head_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "老族长皱起眉，还是把压箱底的族谱搬了出来。你逐页核对，发现口述年份与县志相差两年。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s04_clan_head_005",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "第一道门打开了。记住，许可与信任本身也是调查的一部分。",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s05_grandmother",
+      "type": "normal",
+      "title": "第五幕：王奶奶的记忆·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 40,
+      "backgroundRef": "lu/s05/grandmother_room",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s06_zhao_uncle",
+      "lines": [
+        {
+          "code": "lu_scholar_s05_grandmother_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王奶奶已经八十二岁，裹着小脚坐在炕沿。她对“过去的事”既想说，又像怕惊动什么。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s05_grandmother_002",
+          "lineType": "dialogue",
+          "speaker": "王奶奶",
+          "content": "俺儿子去东北了，三年没来信。你们问那些老事，能先陪俺说会儿话不？",
+          "portraitRef": "lu/grandmother/worried",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s05_grandmother_003",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你拿出笔记，谨慎追问：“您说的那年，是光绪二十五年还是二十六年？”",
+          "portraitRef": "lu/protagonist/scholar",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s05_grandmother_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王奶奶被问得有些疲惫，却在你读出一个旧地名时忽然抬头：“对，就是那座庙。”",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s05_grandmother_005",
+          "lineType": "dialogue",
+          "speaker": "王奶奶",
+          "content": "那庙就在梨园屯东头。年份俺记不牢，可那场火，一辈子忘不了。",
+          "portraitRef": "lu/grandmother/remembering",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s05_grandmother_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你第一次明白，考据不是为了驳倒老人，而是帮助记忆找到能够落脚的位置。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s05_grandmother_007",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得第一份有效口述记录。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/oral_history_1",
+          "orderIndex": 6,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s06_zhao_uncle",
+      "type": "normal",
+      "title": "第六幕：旧刀与拳谱·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 53,
+      "backgroundRef": "lu/s06/zhao_courtyard",
+      "cgRef": "lu/s06/old_saber",
+      "nextNodeCode": "lu_scholar_s07_liu_oldman",
+      "lines": [
+        {
+          "code": "lu_scholar_s06_zhao_uncle_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "赵大叔从屋梁上取下一把锈迹斑斑的旧刀，刀身依稀刻着“光绪二十四年”。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s06_zhao_uncle_002",
+          "lineType": "dialogue",
+          "speaker": "赵大叔",
+          "content": "祖上传下来的。梅花拳不是只会打架，它有自己的规矩。",
+          "portraitRef": "lu/zhao_uncle/proud",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s06_zhao_uncle_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你先记下旧刀上的“光绪二十四年”，再追问梅花拳传承的时间线。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s06_zhao_uncle_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "赵大叔拍着桌子说了半天，你把人物、地点和师承关系整理成一张清楚的谱系。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s06_zhao_uncle_005",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "实物不会自己说话。要把来源、传承和口述彼此对照，它才成为证据。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s06_zhao_uncle_006",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得旧刀记录与拳谱线索。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/old_saber",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s07_liu_oldman",
+      "type": "normal",
+      "title": "第七幕：另一方的记忆·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 65,
+      "backgroundRef": "lu/s07/isolated_courtyard",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s08_archive",
+      "lines": [
+        {
+          "code": "lu_scholar_s07_liu_oldman_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "刘老汉独自住在村东小院。因为教民后代的身份，他对来访者始终保持距离。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s07_liu_oldman_002",
+          "lineType": "dialogue",
+          "speaker": "刘老汉",
+          "content": "村里人不跟我说话，已经二十年了。你们写书，也只想写一种说法吧？",
+          "portraitRef": "lu/liu_oldman/guarded",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s07_liu_oldman_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你把教案记录中的说法念给刘老汉听，请他指出不符合村中记忆的地方。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s07_liu_oldman_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "刘老汉沉默许久：“纸上写的是一回事，人当年怎么活，又是另一回事。”",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s07_liu_oldman_005",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "如果只留下胜利者或多数人的声音，我们得到的也不是完整历史。",
+          "portraitRef": "lu/protagonist/scholar",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s07_liu_oldman_006",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得第二种立场的口述记录。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/oral_history_2",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s08_archive",
+      "type": "normal",
+      "title": "第八幕：尘封档案·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 76,
+      "backgroundRef": "lu/s08/county_archive",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s09_return",
+      "lines": [
+        {
+          "code": "lu_scholar_s08_archive_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "县档案室里尘土飞扬。管理员下班后，你们把提前买好的火烧放在一边，继续一页页翻阅旧卷。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s08_archive_002",
+          "lineType": "dialogue",
+          "speaker": "小杨老师",
+          "content": "这本旧县志里有梨园屯教案的地名，可写法和现在不一样。",
+          "portraitRef": "lu/teacher_yang/focused",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s08_archive_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "尘封档案里，一处不起眼的地名异写与你的口述记录相互印证。你把证据链重新排好。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s08_archive_004",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "口述、文献、实物、图像，彼此独立又彼此校验。不能因为某一种材料顺手，就只相信它。",
+          "portraitRef": "lu/lu_yao/serious",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s08_archive_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "证据链完成：三份口述、三件实物或文献证据。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/evidence_chain",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s09_return",
+      "type": "normal",
+      "title": "第九幕：归途·书生线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 86,
+      "backgroundRef": "lu/s09/winter_road",
+      "cgRef": null,
+      "nextNodeCode": "lu_scholar_s10_report",
+      "lines": [
+        {
+          "code": "lu_scholar_s09_return_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "调查结束的傍晚，你们骑车返回县城。风从田野上掠过，远处炊烟一缕缕升起。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s09_return_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "归途中，你仍在检查卡片：地名、年代、人物关系，终于从纷乱叙述中显出轮廓。",
+          "portraitRef": "lu/protagonist/scholar",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s09_return_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "田野不会一次就把答案交出来。真正的研究，是沿着线索深挖，从不轻言放弃。",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s09_return_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你把围巾拉紧，回头望了一眼逐渐隐入暮色的村庄。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_scholar_s10_report",
+      "type": "route_end",
+      "title": "结局：求真之卷",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 96,
+      "backgroundRef": "lu/s10/report_room",
+      "cgRef": "lu/s10/scholar_report",
+      "nextNodeCode": "lu_epilogue",
+      "lines": [
+        {
+          "code": "lu_scholar_s10_report_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "回到学校后，你们连续数夜整理调查记录。桌上摊着录音、照片、草图、县志和写满批注的卡片。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s10_report_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你的报告以严密考据重建事件时间线，纠正了几处沿袭已久的文本误差。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s10_report_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "路遥老师翻到最后一页：“证据扎实。但别忘了，证据背后都是活过的人。”",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s10_report_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你在标题下补写一句：历史的准确，与历史的温度同样重要。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_scholar_s10_report_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "书生线调查报告完成。",
+          "portraitRef": null,
+          "effectRef": "ending:lu/scholar",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s02_departure",
+      "type": "normal",
+      "title": "第二幕：出发·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 8,
+      "backgroundRef": "lu/s02/jinan_station",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s03_map",
+      "lines": [
+        {
+          "code": "lu_empathy_s02_departure_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "天还没亮，调查队在济南站集合。帆布包、自行车和一摞调查提纲挤满车厢。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s02_departure_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你带了几包点心和一条干净围巾，想着进村后先和乡亲们熟悉起来。",
+          "portraitRef": "lu/protagonist/empathy",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s02_departure_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "路遥老师提醒：先学会听，再学会问。人愿意把你当自己人，故事才会慢慢出来。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s02_departure_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "汽笛响起，城市慢慢退到身后。你们向冠县方向出发。",
+          "portraitRef": null,
+          "effectRef": "transition:train_to_field",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s03_map",
+      "type": "normal",
+      "title": "第三幕：冠县地图·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 16,
+      "backgroundRef": "lu/s03/county_map",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s04_clan_head",
+      "lines": [
+        {
+          "code": "lu_empathy_s03_map_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "县城招待所里，一张地图铺满小桌。十八村、梨园屯和旧庙址被铅笔线连在一起。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s03_map_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你记下沿途炊烟、土坯墙和门楣上的红纸。地图之外，每个村庄都有自己的气味与声音。",
+          "portraitRef": "lu/protagonist/empathy",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s03_map_003",
+          "lineType": "dialogue",
+          "speaker": "调查队员",
+          "content": "明早先进村找族长，再分别寻访老人。一天的路可不短。",
+          "portraitRef": "lu/student/normal",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s03_map_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你们把干粮、笔记和设备分装好。窗外风声很紧，桌上的地图却逐渐有了方向。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s04_clan_head",
+      "type": "normal",
+      "title": "第四幕：老族长家·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 27,
+      "backgroundRef": "lu/s04/clan_head_courtyard",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s05_grandmother",
+      "lines": [
+        {
+          "code": "lu_empathy_s04_clan_head_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "土坯墙外堆着玉米秸，门楣上“姜太公在此”的红纸已经褪色。老族长倚着旱烟杆审视你们。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s04_clan_head_002",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "族长爷爷，我们一路走得饿了，能不能先在您这儿讨口热水？",
+          "portraitRef": "lu/protagonist/empathy",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s04_clan_head_003",
+          "lineType": "dialogue",
+          "speaker": "老族长",
+          "content": "路走得不近吧？先坐。那些事，急不得。",
+          "portraitRef": "lu/clan_head/serious",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s04_clan_head_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "老族长的神情松下来，留你们吃了顿饭。饭后，他主动讲起祖辈守护村庄的旧事。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s04_clan_head_005",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "第一道门打开了。记住，许可与信任本身也是调查的一部分。",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s05_grandmother",
+      "type": "normal",
+      "title": "第五幕：王奶奶的记忆·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 40,
+      "backgroundRef": "lu/s05/grandmother_room",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s06_zhao_uncle",
+      "lines": [
+        {
+          "code": "lu_empathy_s05_grandmother_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王奶奶已经八十二岁，裹着小脚坐在炕沿。她对“过去的事”既想说，又像怕惊动什么。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s05_grandmother_002",
+          "lineType": "dialogue",
+          "speaker": "王奶奶",
+          "content": "俺儿子去东北了，三年没来信。你们问那些老事，能先陪俺说会儿话不？",
+          "portraitRef": "lu/grandmother/worried",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s05_grandmother_003",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你没有立刻打开笔记本，只把热粥推到王奶奶手边，陪她说起儿子多年未归的心事。",
+          "portraitRef": "lu/protagonist/empathy",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s05_grandmother_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "老人绕了很久，才说到1900年的那场火。她的手轻轻发抖，你没有打断。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s05_grandmother_005",
+          "lineType": "dialogue",
+          "speaker": "王奶奶",
+          "content": "那年逃难的人从俺家门口过，谁也顾不上问他们叫什么。",
+          "portraitRef": "lu/grandmother/remembering",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s05_grandmother_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "临别时她握住你的手：“孩子，写的时候，也写写那些没留下名字的人。”",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s05_grandmother_007",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得第一份有效口述记录。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/oral_history_1",
+          "orderIndex": 6,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s06_zhao_uncle",
+      "type": "normal",
+      "title": "第六幕：旧刀与拳谱·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 53,
+      "backgroundRef": "lu/s06/zhao_courtyard",
+      "cgRef": "lu/s06/old_saber",
+      "nextNodeCode": "lu_empathy_s07_liu_oldman",
+      "lines": [
+        {
+          "code": "lu_empathy_s06_zhao_uncle_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "赵大叔从屋梁上取下一把锈迹斑斑的旧刀，刀身依稀刻着“光绪二十四年”。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s06_zhao_uncle_002",
+          "lineType": "dialogue",
+          "speaker": "赵大叔",
+          "content": "祖上传下来的。梅花拳不是只会打架，它有自己的规矩。",
+          "portraitRef": "lu/zhao_uncle/proud",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s06_zhao_uncle_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你陪赵大叔喝了半碗酒，听他从学拳说到家族旧事。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s06_zhao_uncle_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "他说到激动处站起来比划，又忽然坐下：“刀留下了，人没留下。你们可得记住。”",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s06_zhao_uncle_005",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "实物不会自己说话。要把来源、传承和口述彼此对照，它才成为证据。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s06_zhao_uncle_006",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得旧刀记录与拳谱线索。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/old_saber",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s07_liu_oldman",
+      "type": "normal",
+      "title": "第七幕：另一方的记忆·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 65,
+      "backgroundRef": "lu/s07/isolated_courtyard",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s08_archive",
+      "lines": [
+        {
+          "code": "lu_empathy_s07_liu_oldman_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "刘老汉独自住在村东小院。因为教民后代的身份，他对来访者始终保持距离。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s07_liu_oldman_002",
+          "lineType": "dialogue",
+          "speaker": "刘老汉",
+          "content": "村里人不跟我说话，已经二十年了。你们写书，也只想写一种说法吧？",
+          "portraitRef": "lu/liu_oldman/guarded",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s07_liu_oldman_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你先听刘老汉讲被村人疏远的二十年，没有急着追问立场。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s07_liu_oldman_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "他的防备渐渐松开，终于说出教民家庭在冲突中的恐惧与失去。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s07_liu_oldman_005",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "如果只留下胜利者或多数人的声音，我们得到的也不是完整历史。",
+          "portraitRef": "lu/protagonist/empathy",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s07_liu_oldman_006",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得第二种立场的口述记录。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/oral_history_2",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s08_archive",
+      "type": "normal",
+      "title": "第八幕：尘封档案·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 76,
+      "backgroundRef": "lu/s08/county_archive",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s09_return",
+      "lines": [
+        {
+          "code": "lu_empathy_s08_archive_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "县档案室里尘土飞扬。管理员下班后，你们把提前买好的火烧放在一边，继续一页页翻阅旧卷。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s08_archive_002",
+          "lineType": "dialogue",
+          "speaker": "小杨老师",
+          "content": "这本旧县志里有梨园屯教案的地名，可写法和现在不一样。",
+          "portraitRef": "lu/teacher_yang/focused",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s08_archive_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "档案里的名字冷冰冰地排成一列。你想起老人们的手和眼神，在每个名字旁补上口述来源。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s08_archive_004",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "口述、文献、实物、图像，彼此独立又彼此校验。不能因为某一种材料顺手，就只相信它。",
+          "portraitRef": "lu/lu_yao/serious",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s08_archive_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "证据链完成：三份口述、三件实物或文献证据。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/evidence_chain",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s09_return",
+      "type": "normal",
+      "title": "第九幕：归途·人情线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 86,
+      "backgroundRef": "lu/s09/winter_road",
+      "cgRef": null,
+      "nextNodeCode": "lu_empathy_s10_report",
+      "lines": [
+        {
+          "code": "lu_empathy_s09_return_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "调查结束的傍晚，你们骑车返回县城。风从田野上掠过，远处炊烟一缕缕升起。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s09_return_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "暮色里，你记住的不只是答案，还有一碗粥的温度、院墙上的夕阳和告别时迟迟没有松开的手。",
+          "portraitRef": "lu/protagonist/empathy",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s09_return_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "田野不会一次就把答案交出来。真正的研究，是沿着线索深挖，从不轻言放弃。",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s09_return_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你把围巾拉紧，回头望了一眼逐渐隐入暮色的村庄。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_empathy_s10_report",
+      "type": "route_end",
+      "title": "结局：人间之卷",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 96,
+      "backgroundRef": "lu/s10/report_room",
+      "cgRef": "lu/s10/empathy_report",
+      "nextNodeCode": "lu_epilogue",
+      "lines": [
+        {
+          "code": "lu_empathy_s10_report_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "回到学校后，你们连续数夜整理调查记录。桌上摊着录音、照片、草图、县志和写满批注的卡片。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s10_report_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你的报告保留了大量原声讲述，让不同立场的人第一次在同一份记录里彼此照面。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s10_report_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "路遥老师轻声说：“你的记录还要再打磨，但你没有把人写丢。”",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s10_report_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你明白，历史不是抽象的洪流，而是无数普通人在其中度过的一生。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_empathy_s10_report_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "人情线调查报告完成。",
+          "portraitRef": null,
+          "effectRef": "ending:lu/empathy",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s02_departure",
+      "type": "normal",
+      "title": "第二幕：出发·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 8,
+      "backgroundRef": "lu/s02/jinan_station",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s03_map",
+      "lines": [
+        {
+          "code": "lu_practical_s02_departure_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "天还没亮，调查队在济南站集合。帆布包、自行车和一摞调查提纲挤满车厢。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s02_departure_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你检查录音笔、相机、卷尺和备用电池，把每日调查表夹在最顺手的位置。",
+          "portraitRef": "lu/protagonist/practical",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s02_departure_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "路遥老师点头：工具能留下细节，但工具不能替你判断什么值得记录。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s02_departure_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "汽笛响起，城市慢慢退到身后。你们向冠县方向出发。",
+          "portraitRef": null,
+          "effectRef": "transition:train_to_field",
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s03_map",
+      "type": "normal",
+      "title": "第三幕：冠县地图·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 16,
+      "backgroundRef": "lu/s03/county_map",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s04_clan_head",
+      "lines": [
+        {
+          "code": "lu_practical_s03_map_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "县城招待所里，一张地图铺满小桌。十八村、梨园屯和旧庙址被铅笔线连在一起。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s03_map_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你把路程拆成节点，估算每段步行时间，并在地图边记下“每村至少两份独立证言”。",
+          "portraitRef": "lu/protagonist/practical",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s03_map_003",
+          "lineType": "dialogue",
+          "speaker": "调查队员",
+          "content": "明早先进村找族长，再分别寻访老人。一天的路可不短。",
+          "portraitRef": "lu/student/normal",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s03_map_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你们把干粮、笔记和设备分装好。窗外风声很紧，桌上的地图却逐渐有了方向。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s04_clan_head",
+      "type": "normal",
+      "title": "第四幕：老族长家·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 27,
+      "backgroundRef": "lu/s04/clan_head_courtyard",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s05_grandmother",
+      "lines": [
+        {
+          "code": "lu_practical_s04_clan_head_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "土坯墙外堆着玉米秸，门楣上“姜太公在此”的红纸已经褪色。老族长倚着旱烟杆审视你们。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s04_clan_head_002",
+          "lineType": "dialogue",
+          "speaker": "你",
+          "content": "从村口到老庙步行约八分钟。请您带我们走一遍，我边走边记。",
+          "portraitRef": "lu/protagonist/practical",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s04_clan_head_003",
+          "lineType": "dialogue",
+          "speaker": "老族长",
+          "content": "你倒是个干活利索的。想看什么，我带你走一遍。",
+          "portraitRef": "lu/clan_head/serious",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s04_clan_head_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你替族长搬完两捆柴，他爽快地领你丈量旧址，还指出一条地图上没有的小路。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s04_clan_head_005",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "第一道门打开了。记住，许可与信任本身也是调查的一部分。",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s05_grandmother",
+      "type": "normal",
+      "title": "第五幕：王奶奶的记忆·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 40,
+      "backgroundRef": "lu/s05/grandmother_room",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s06_zhao_uncle",
+      "lines": [
+        {
+          "code": "lu_practical_s05_grandmother_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王奶奶已经八十二岁，裹着小脚坐在炕沿。她对“过去的事”既想说，又像怕惊动什么。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s05_grandmother_002",
+          "lineType": "dialogue",
+          "speaker": "王奶奶",
+          "content": "俺儿子去东北了，三年没来信。你们问那些老事，能先陪俺说会儿话不？",
+          "portraitRef": "lu/grandmother/worried",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s05_grandmother_003",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "你架好录音笔，又把它往旁边挪了挪，避免让老人紧张。",
+          "portraitRef": "lu/protagonist/practical",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s05_grandmother_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "王奶奶起初问：“你这是干啥？我不上报纸。”你解释每段记录都会先征得她同意。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s05_grandmother_005",
+          "lineType": "dialogue",
+          "speaker": "王奶奶",
+          "content": "你标的第三处，是旧庙后墙。后来修路，才把它平了。",
+          "portraitRef": "lu/grandmother/remembering",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s05_grandmother_006",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "录音结束后，你立刻备份编号，并把她提到的三个地点标在草图上。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 5,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s05_grandmother_007",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得第一份有效口述记录。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/oral_history_1",
+          "orderIndex": 6,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s06_zhao_uncle",
+      "type": "normal",
+      "title": "第六幕：旧刀与拳谱·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 53,
+      "backgroundRef": "lu/s06/zhao_courtyard",
+      "cgRef": "lu/s06/old_saber",
+      "nextNodeCode": "lu_practical_s07_liu_oldman",
+      "lines": [
+        {
+          "code": "lu_practical_s06_zhao_uncle_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "赵大叔从屋梁上取下一把锈迹斑斑的旧刀，刀身依稀刻着“光绪二十四年”。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s06_zhao_uncle_002",
+          "lineType": "dialogue",
+          "speaker": "赵大叔",
+          "content": "祖上传下来的。梅花拳不是只会打架，它有自己的规矩。",
+          "portraitRef": "lu/zhao_uncle/proud",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s06_zhao_uncle_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你给旧刀拍摄正反面细节，测量长度，记录锈蚀与刻字位置。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s06_zhao_uncle_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "赵大叔看你做事认真，干脆取出一张旧拳谱，让你补拍了缺失的一页。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s06_zhao_uncle_005",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "实物不会自己说话。要把来源、传承和口述彼此对照，它才成为证据。",
+          "portraitRef": "lu/lu_yao/teaching",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s06_zhao_uncle_006",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得旧刀记录与拳谱线索。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/old_saber",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s07_liu_oldman",
+      "type": "normal",
+      "title": "第七幕：另一方的记忆·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 65,
+      "backgroundRef": "lu/s07/isolated_courtyard",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s08_archive",
+      "lines": [
+        {
+          "code": "lu_practical_s07_liu_oldman_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "刘老汉独自住在村东小院。因为教民后代的身份，他对来访者始终保持距离。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s07_liu_oldman_002",
+          "lineType": "dialogue",
+          "speaker": "刘老汉",
+          "content": "村里人不跟我说话，已经二十年了。你们写书，也只想写一种说法吧？",
+          "portraitRef": "lu/liu_oldman/guarded",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s07_liu_oldman_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你逐项记录冲突发生的地点、人数和物件损失，并把“无法确认”明确标出。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s07_liu_oldman_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "刘老汉说：“你这孩子不会说漂亮话，倒是每一句都问到实处。”",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s07_liu_oldman_005",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "如果只留下胜利者或多数人的声音，我们得到的也不是完整历史。",
+          "portraitRef": "lu/protagonist/practical",
+          "effectRef": null,
+          "orderIndex": 4,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s07_liu_oldman_006",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "获得第二种立场的口述记录。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/oral_history_2",
+          "orderIndex": 5,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s08_archive",
+      "type": "normal",
+      "title": "第八幕：尘封档案·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 76,
+      "backgroundRef": "lu/s08/county_archive",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s09_return",
+      "lines": [
+        {
+          "code": "lu_practical_s08_archive_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "县档案室里尘土飞扬。管理员下班后，你们把提前买好的火烧放在一边，继续一页页翻阅旧卷。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s08_archive_002",
+          "lineType": "dialogue",
+          "speaker": "小杨老师",
+          "content": "这本旧县志里有梨园屯教案的地名，可写法和现在不一样。",
+          "portraitRef": "lu/teacher_yang/focused",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s08_archive_003",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你给档案逐页编号，建立照片与摘录的对应表，发现两份材料其实来自同一个传抄来源。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s08_archive_004",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "口述、文献、实物、图像，彼此独立又彼此校验。不能因为某一种材料顺手，就只相信它。",
+          "portraitRef": "lu/lu_yao/serious",
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s08_archive_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "证据链完成：三份口述、三件实物或文献证据。",
+          "portraitRef": null,
+          "effectRef": "collection:lu/evidence_chain",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s09_return",
+      "type": "normal",
+      "title": "第九幕：归途·实干线",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 86,
+      "backgroundRef": "lu/s09/winter_road",
+      "cgRef": null,
+      "nextNodeCode": "lu_practical_s10_report",
+      "lines": [
+        {
+          "code": "lu_practical_s09_return_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "调查结束的傍晚，你们骑车返回县城。风从田野上掠过，远处炊烟一缕缕升起。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s09_return_002",
+          "lineType": "dialogue",
+          "speaker": "小吴",
+          "content": "回程车上，你核对录音、照片、草图和访谈表。三份口述与三件实物证据全部有了可追溯编号。",
+          "portraitRef": "lu/protagonist/practical",
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s09_return_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "田野不会一次就把答案交出来。真正的研究，是沿着线索深挖，从不轻言放弃。",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s09_return_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你把围巾拉紧，回头望了一眼逐渐隐入暮色的村庄。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_practical_s10_report",
+      "type": "route_end",
+      "title": "结局：践行之卷",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 96,
+      "backgroundRef": "lu/s10/report_room",
+      "cgRef": "lu/s10/practical_report",
+      "nextNodeCode": "lu_epilogue",
+      "lines": [
+        {
+          "code": "lu_practical_s10_report_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "回到学校后，你们连续数夜整理调查记录。桌上摊着录音、照片、草图、县志和写满批注的卡片。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s10_report_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你的报告附有完整证据目录、访谈索引和现场草图，任何结论都能追溯来源。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s10_report_003",
+          "lineType": "dialogue",
+          "speaker": "路遥老师",
+          "content": "路遥老师说：“挺不错，还要多考察。材料整理得再好，也要回答它说明了什么。”",
+          "portraitRef": "lu/lu_yao/pleased",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s10_report_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "你在结论前停笔片刻，把数据重新放回那些村庄与人的生活之中。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_practical_s10_report_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "实干线调查报告完成。",
+          "portraitRef": null,
+          "effectRef": "ending:lu/practical",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    },
+    {
+      "code": "lu_epilogue",
+      "type": "chapter_end",
+      "title": "尾声：田野之间",
+      "entry": false,
+      "showInStoryline": true,
+      "progressPercent": 100,
+      "backgroundRef": "lu/epilogue/sdu_library",
+      "cgRef": "lu/epilogue/field_notes",
+      "nextNodeCode": null,
+      "lines": [
+        {
+          "code": "lu_epilogue_001",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "1960年的第一次大规模调查之后，路遥继续在义和团与民间宗教研究的田野中跋涉数十年。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 0,
+          "condition": null
+        },
+        {
+          "code": "lu_epilogue_002",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "他与后来者一次次走进村庄、档案馆和普通人的生活，以口述、文献、实物和图像彼此校验，让沉默的历史重新获得声音。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 1,
+          "condition": null
+        },
+        {
+          "code": "lu_epilogue_003",
+          "lineType": "dialogue",
+          "speaker": "路遥",
+          "content": "历史的背后是生生不息的人们。真正的学者，绝不能忽视这个。",
+          "portraitRef": "lu/lu_yao/elder_serious",
+          "effectRef": null,
+          "orderIndex": 2,
+          "condition": null
+        },
+        {
+          "code": "lu_epilogue_004",
+          "lineType": "narration",
+          "speaker": null,
+          "content": "历史不只在书页上，也在田野的风里、老人手心的温度里，以及每一条被认真追问的线索中。",
+          "portraitRef": null,
+          "effectRef": null,
+          "orderIndex": 3,
+          "condition": null
+        },
+        {
+          "code": "lu_epilogue_005",
+          "lineType": "effect",
+          "speaker": null,
+          "content": "完成路遥人物故事。",
+          "portraitRef": null,
+          "effectRef": "ending:lu_yao_complete",
+          "orderIndex": 4,
+          "condition": null
+        }
+      ],
+      "choices": []
+    }
+  ]
+}

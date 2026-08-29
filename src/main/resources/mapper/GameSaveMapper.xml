@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.sdu.storygame.mapper.GameSaveMapper">
+
+    <!--
+        GameSaveVO 是 record，因此通过构造器完成结果映射。
+
+        构造参数顺序必须与 GameSaveVO 中声明的字段顺序完全一致。
+    -->
+    <resultMap id="gameSaveVOResultMap"
+               type="edu.sdu.storygame.data.vo.GameSaveVO">
+
+        <constructor>
+            <idArg column="id"
+                   javaType="java.lang.Long"/>
+
+            <arg column="save_name"
+                 javaType="java.lang.String"/>
+
+            <arg column="chapter_id"
+                 javaType="java.lang.Long"/>
+
+            <arg column="chapter_title"
+                 javaType="java.lang.String"/>
+
+            <arg column="chapter_character"
+                 javaType="java.lang.String"/>
+
+            <arg column="current_node_id"
+                 javaType="java.lang.Long"/>
+
+            <arg column="current_node_title"
+                 javaType="java.lang.String"/>
+
+            <arg column="current_line_index"
+                 javaType="java.lang.Integer"/>
+
+            <arg column="completion_rate"
+                 javaType="java.lang.Integer"/>
+
+            <arg column="created_at"
+                 javaType="java.time.LocalDateTime"/>
+
+            <arg column="updated_at"
+                 javaType="java.time.LocalDateTime"/>
+        </constructor>
+
+    </resultMap>
+
+    <!--
+        chapterId 可选：
+        1. 传入 chapterId：查询指定人物故事的存档；
+        2. 不传 chapterId：查询当前用户的全部存档。
+
+        必须通过 user_id 限定查询范围，不能仅根据 chapter_id 查询，
+        否则可能返回其他用户的存档。
+    -->
+    <select id="selectSaveList"
+            resultMap="gameSaveVOResultMap">
+
+        SELECT gs.id,
+        gs.save_name,
+        gs.chapter_id,
+        c.title AS chapter_title,
+        c.`character` AS chapter_character,
+        gs.current_node_id,
+        sn.title AS current_node_title,
+        gs.current_line_index,
+        gs.completion_rate,
+        gs.created_at,
+        gs.updated_at
+        FROM game_save gs
+        INNER JOIN chapter c
+        ON c.id = gs.chapter_id
+        INNER JOIN story_node sn
+        ON sn.id = gs.current_node_id
+        WHERE gs.user_id = #{userId}
+
+        <if test="chapterId != null">
+            AND gs.chapter_id = #{chapterId}
+        </if>
+
+        ORDER BY gs.updated_at DESC,
+        gs.id DESC
+
+    </select>
+
+</mapper>

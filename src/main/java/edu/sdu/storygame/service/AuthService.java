@@ -11,7 +11,6 @@ import edu.sdu.storygame.util.CasJwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
@@ -33,30 +32,24 @@ public class AuthService {
     @Value("${app.cas.jwt-secret}")
     private String casJwtSecret;
 
-    // 注入自己以获取代理对象
-    @Lazy
-    private final AuthService self;
-
     /**
-     * 游客登录：直接建一个游客用户并签发登录态。
+     * 游客登录：直接建一个游客用户并签发登录态
      */
     public String guestLogin() {
         User user = new User();
         user.setIsGuest(true);
         user.setUsername("游客" + System.currentTimeMillis() % 100000);
-        user.setProgressRate(0);
-        user.setUnlockedStoryCount(0);
-        user.setAchievementCount(0);
-        userMapper.insert(user);   // 插入后 user.id 自动回填
+        userMapper.insert(user);
         return appJwtUtil.generate(user.getId());
     }
 
     /**
      * 统一认证登录
-     * 用回调拿到的一次性 code，换取官方JWT，验签得到学号姓名，查/建用户，签发登录态。
+     * 用回调拿到的一次性 code，换取官方JWT，验签得到学号姓名，查/建用户，签发登录态
      * @param code 回调 URL 上的一次性授权码（60 秒、只能用一次）
      * @return 本服务的JWT
      */
+    @Transactional(rollbackFor = Exception.class)
     public String casLoginByCode(String code) {
         // 调用官方/auth/token换取JWT
         String casJwt = exchangeToken(code);
@@ -68,18 +61,19 @@ public class AuthService {
         String casId = parsed[0];
         String name = parsed[1];
 
-        return self.upsertAndIssue(casId,name);
+        return upsertAndIssue(casId,name);
     }
 
     /**
      * mock用
      */
+    @Transactional(rollbackFor = Exception.class)
     public String casLoginMock(String casId, String name) {
-        return self.upsertAndIssue(casId, name);
+        return upsertAndIssue(casId, name);
     }
 
     /**
-     * 调用官方 POST /auth/token,从响应data.token取出JWT。
+     * 调用官方 POST /auth/token,从响应data.token取出JWT
      */
     private String exchangeToken(String code) {
         try {
@@ -105,7 +99,6 @@ public class AuthService {
         }
     }
 
-    @Transactional(rollbackFor = Exception.class)// 动态代理要求public
     public String upsertAndIssue(String casId,String name) {
         User user = userMapper.selectOne(
                 Wrappers.<User>lambdaQuery().eq(User::getStudentId,casId));
@@ -115,9 +108,6 @@ public class AuthService {
             user.setIsGuest(false);
             user.setStudentId(casId);
             user.setUsername(name != null ? name : casId);
-            user.setProgressRate(0);
-            user.setUnlockedStoryCount(0);
-            user.setAchievementCount(0);
             userMapper.insert(user);
         }
         return appJwtUtil.generate(user.getId());

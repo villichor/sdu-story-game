@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.sdu.storygame.mapper.AchievementMapper">
+
+    <resultMap id="achievementVOResultMap"
+               type="edu.sdu.storygame.data.vo.AchievementVO">
+
+        <constructor>
+            <idArg column="id"
+                   javaType="java.lang.Long"/>
+
+            <arg column="name"
+                 javaType="java.lang.String"/>
+
+            <arg column="description"
+                 javaType="java.lang.String"/>
+
+            <arg column="icon"
+                 javaType="java.lang.String"/>
+
+            <arg column="type"
+                 javaType="java.lang.String"/>
+
+            <arg column="chapter_id"
+                 javaType="java.lang.Long"/>
+
+            <arg column="souvenir"
+                 javaType="java.lang.String"/>
+
+            <arg column="is_unlocked"
+                 javaType="java.lang.Boolean"/>
+
+            <arg column="unlocked_at"
+                 javaType="java.time.LocalDateTime"/>
+        </constructor>
+
+    </resultMap>
+
+    <select id="selectAchievementList"
+            resultMap="achievementVOResultMap">
+
+        SELECT a.id,
+        a.name,
+        a.description,
+        a.icon,
+        a.type,
+        a.chapter_id,
+        a.souvenir,
+        CASE
+        WHEN ua.id IS NULL THEN 0
+        ELSE 1
+        END AS is_unlocked,
+        ua.unlocked_at
+        FROM achievement a
+        LEFT JOIN user_achievement ua
+        ON ua.achievement_id = a.id
+        AND ua.user_id = #{userId}
+        WHERE 1 = 1
+
+        <if test="chapterId != null">
+            AND a.chapter_id = #{chapterId}
+        </if>
+
+        ORDER BY a.chapter_id ASC,
+        a.type ASC,
+        a.id ASC
+
+    </select>
+
+</mapper>
