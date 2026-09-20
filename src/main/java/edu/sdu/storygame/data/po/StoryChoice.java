@@ -17,9 +17,8 @@ public class StoryChoice {
     private Long id;
     private Long fromNodeId;
     private Long toNodeId;
-
     /**
-     * 稳定业务标识。
+     * 稳定业务标识
      * 例如：
      * FOOD_NOODLES
      * ROUTE_A

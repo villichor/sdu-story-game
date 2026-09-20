@@ -13,12 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
- * 登录态拦截器：校验请求头 Authorization: Bearer <token>。
- * 通过则把 userId 存进 UserContext（ThreadLocal），业务里直接 UserContext.getUserId() 取。
- * 请求结束后在 afterCompletion 里清理，防止线程复用串号。
- *
- * 说明：拦截器在 controller 之前执行，@RestControllerAdvice 兜不住这里的异常，
- *       所以未登录时直接写回统一的 Result JSON，而不是 throw。
+ * 登录态拦截器
  */
 @Component
 @RequiredArgsConstructor
@@ -30,6 +25,11 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+        // CORS preflight carries no login token and must reach Spring's CORS handler.
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            return true;
+        }
+
         String header = request.getHeader("Authorization");
         if (header == null || !header.startsWith("Bearer ")) {
             writeUnauthorized(response);

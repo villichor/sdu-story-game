@@ -26,10 +26,3 @@ app:
   cas:
     # 统一认证Pass平台的基础地址
     base-url: https://i.sdu.edu.cn/pass-api
-    # 控制台创建JWT应用后拿到的JWT密钥
-    # 用于对官方换回的JWT做PBKDF2派生+HS256验签
-    jwt-secret: dev-placeholder
-    # 前端
-    frontend-url: http://localhost:5173/login-success
-    # 是否开启 mock，测试开发开启
-    mock-enabled: true

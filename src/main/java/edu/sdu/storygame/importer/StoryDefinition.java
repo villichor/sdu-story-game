@@ -3,8 +3,7 @@ package edu.sdu.storygame.importer;
 import java.util.List;
 
 /**
- * 剧情 JSON 的内存模型
- * JSON 中只使用稳定业务编码，不依赖任何环境中的数据库自增 ID
+ * 剧情JSON的内存模型
  */
 public record StoryDefinition(
         Integer schemaVersion,

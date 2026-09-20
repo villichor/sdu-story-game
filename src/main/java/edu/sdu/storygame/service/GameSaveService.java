@@ -110,15 +110,12 @@ public class GameSaveService {
         Long userId = UserContext.getUserIdRequired();
         // 校验存档
         GameSave gameSave = getOwnedSave(saveId, userId);
-        // 查询节点
         StoryNode currentNode = getCurrentNode(gameSave);
-        // 查询可见台词
         List<StoryLine> storyLines = getVisibleStoryLines(saveId,currentNode.getId());
         List<StoryChoice> storyChoices = getStoryChoices(currentNode.getId());
 
         Integer currentLineIndex = gameSave.getCurrentLineIndex();
         validateCurrentLineIndex(currentLineIndex,storyLines.size());
-
         StoryInteractionType interactionType = determineInteractionType(
                 currentNode,
                 currentLineIndex,
@@ -129,7 +126,6 @@ public class GameSaveService {
 
         // 只有台词已经播放完并且当前节点确实需要选择时才向前端返回选项，避免前端在剧情尚未播放完成时提前显示选项
         List<StoryChoiceVO> choiceVOList = interactionType==StoryInteractionType.CHOICE ? storyChoices.stream().map(this::toStoryChoiceVO).toList():List.of();
-
         StoryNodeVO nodeVO = new StoryNodeVO(
                 currentNode.getId(),
                 currentNode.getNodeCode(),
@@ -153,8 +149,6 @@ public class GameSaveService {
 
     /**
      * 更新当前存档的台词播放位置 一次只允许向前推进一句台词
-     * @param saveId 存档 ID
-     * @param dto    位置更新请求
      * @return 更新后的剧情交互状态
      */
     @Transactional
@@ -164,7 +158,6 @@ public class GameSaveService {
         GameSave gameSave = getOwnedSave(saveId,userId);
         StoryNode currentNode = getCurrentNode(gameSave);
 
-        // 校验
         // 是否重复请求/来自旧页面
         if(!Objects.equals(currentNode.getId(),dto.expectedNodeId()))
             throw new BusinessException(ResultCode.STORY_STATE_CONFLICT);
@@ -222,15 +215,7 @@ public class GameSaveService {
     }
 
     /**
-     * 推进到下一个剧情节点（该接口统一处理无选项节点的线性推进和存在选项节点的选择推进）
-     * 1. 更新 game_save 当前节点；
-     * 2. 将台词位置重置为 0；
-     * 3. 更新完成度；
-     * 4. 向 save_path 写入新的有效路径记录。
-     * 事务保证更新存档和写入路径必须同时成功
-     *
-     * @param saveId 存档 ID
-     * @param dto    推进请求
+     * 推进到下一个剧情节点（统一处理无选项节点的线性推进和存在选项节点的选择推进）
      * @return 推进后的完整剧情状态
      */
     @Transactional
@@ -239,14 +224,9 @@ public class GameSaveService {
 
         GameSave gameSave = getOwnedSave(saveId,userId);
         StoryNode currentNode = getCurrentNode(gameSave);
-
-
-        // 校验客户端提交的节点必须与数据库中的当前节点一致
+        // 校验请求是否过期
         if (!Objects.equals(currentNode.getId(),dto.expectedNodeId()))
             throw new BusinessException(ResultCode.STORY_STATE_CONFLICT);
-
-
-        // 校验客户端提交的台词位置必须与数据库中一致
         if (!Objects.equals(gameSave.getCurrentLineIndex(),dto.expectedLineIndex()))
             throw new BusinessException(ResultCode.STORY_STATE_CONFLICT);
 
@@ -255,7 +235,6 @@ public class GameSaveService {
         int lineCount = visibleLines.size();
 
         validateCurrentLineIndex(gameSave.getCurrentLineIndex(),lineCount);
-
         List<StoryChoice> storyChoices = getStoryChoices(currentNode.getId());
 
         StoryInteractionType interactionType = determineInteractionType(
@@ -268,15 +247,12 @@ public class GameSaveService {
         // 台词尚未播放完时禁止推进节点
         if (interactionType == StoryInteractionType.PLAYING)
             throw new BusinessException(ResultCode.LINE_INDEX_INVALID);
-
         // 故事结束处理
         if (interactionType == StoryInteractionType.FINISHED)
             throw new BusinessException(ResultCode.CHAPTER_FINISHED);
 
         Long targetNodeId;
         Long selectedChoiceId = null;
-
-        // 两种节点 线性/选择
         if (interactionType == StoryInteractionType.LINEAR) {
             if (dto.choiceId()!=null)
                 throw new BusinessException(ResultCode.CHOICE_NOT_ALLOWED);
@@ -310,8 +286,6 @@ public class GameSaveService {
                         .set(GameSave::getCompletionRate,targetCompletionRate)
         );
 
-        // 受影响行数为0说明出现重复请求或并发状态变化。
-
         if(affectedRows != 1)
             throw new BusinessException(ResultCode.STORY_STATE_CONFLICT);
 
@@ -333,8 +307,6 @@ public class GameSaveService {
 
     /**
      * 查询当前存档实际走过的有效剧情路径
-     *
-     * @param saveId 存档 ID
      * @return 当前有效剧情路径
      */
     public StoryPathVO getStoryPath(Long saveId) {
@@ -355,15 +327,7 @@ public class GameSaveService {
     }
 
     /**
-     * 回溯到当前有效路径中的某个历史节点
-     * 1. 目标节点之后的旧路径设置为 is_active = 0；
-     * 2. game_save 回到目标节点；
-     * 3. current_line_index 重置为 0；
-     * 4. 完成度恢复为目标节点的 progress_percent
-     * 5. 旧路径记录不会被删除
-     *
-     * @param saveId 存档 ID
-     * @param dto    回溯请求
+     * 回溯到当前有效路径中的某个历史节点 旧路径记录不会被删除
      * @return 回溯后的当前剧情
      */
     @Transactional
@@ -587,9 +551,7 @@ public class GameSaveService {
             throw new BusinessException(ResultCode.STORY_CONFIG_ERROR);
 
 
-        /*
-         * 真正的章节终点不能再配置任何后继
-         */
+        //真正的章节终点不能再配置任何后继
         if (chapterEnd && (hasChoices||hasNextNode))
             throw new BusinessException(ResultCode.STORY_CONFIG_ERROR);
         if (hasChoices)

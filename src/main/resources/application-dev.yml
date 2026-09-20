@@ -1,4 +1,7 @@
 # 开发环境覆盖配置
 app:
   cas:
-    mock-enabled: true
+    jwt-secret: ${CAS_JWT_SECRET}
+    # 认证成功后跳回本地前端
+    frontend-url: http://localhost:5173/login-success
+    mock-enabled: false

@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Positive;
  * 用于统一剧情推进接口
  *  * @param expectedNodeId    客户端认为存档当前所在节点
  *  * @param expectedLineIndex 客户端认为当前台词位置
- *  * @param choiceId          线性推进时为 null，选择推进时为玩家选择的 choiceId
+ *  * @param choiceId          线性推进时为null，选择推进时为玩家选择的choiceId
  */
 public record AdvanceStoryDTO(
         @NotNull(message = "当前节点ID不能为空")

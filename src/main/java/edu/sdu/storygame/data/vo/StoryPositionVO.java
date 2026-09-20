@@ -5,9 +5,7 @@ import edu.sdu.storygame.data.enums.StoryInteractionType;
 import java.util.List;
 
 /**
- * 更新台词位置后的剧情状态
- * 不重复返回整个节点的全部台词，只返回位置更新后前端需要的信息
- *
+ * 更新台词位置后的剧情状态，只返回位置更新后前端需要的信息
  * @param saveId          存档 ID
  * @param nodeId          当前节点 ID
  * @param currentLineIndex 更新后的台词位置

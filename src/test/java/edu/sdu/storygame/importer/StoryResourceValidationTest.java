@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * 保证仓库内置剧情在每次 Maven 测试时都通过图校验。
+ * 保证仓库内置剧情在每次 Maven 测试时都通过图校验
  */
 class StoryResourceValidationTest {
 

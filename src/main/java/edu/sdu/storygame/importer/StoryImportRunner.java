@@ -11,7 +11,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * 仅在 story-import Profile 下执行一次剧情导入，成功后关闭应用。
+ * 仅在story-import Profile下执行一次剧情导入，成功后关闭应用
  */
 @Slf4j
 @Component

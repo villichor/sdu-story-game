@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 /**
- * story-import Profile 的命令行参数
+ * story-import Profile的命令行参数
  */
 @Data
 @Component
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class StoryImportProperties {
 
     /**
-     * 支持 classpath: 和 file: 两种 Spring Resource 地址
+     * 支持 classpath:和file: 两种 Spring Resource 地址
      */
     private String location = "classpath:story/pan-chengdong-story.json";
 

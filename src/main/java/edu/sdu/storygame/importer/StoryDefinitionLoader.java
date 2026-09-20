@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * 从 classpath 或文件系统读取剧情 JSON。
+ * 读取剧情JSON
  */
 @Component
 @Profile("story-import")

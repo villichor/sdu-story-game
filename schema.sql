@@ -5,14 +5,12 @@
 -- =============================================================
 
 CREATE DATABASE IF NOT EXISTS sdu_story_game
-  DEFAULT CHARACTER SET utf8mb4
-  DEFAULT COLLATE utf8mb4_unicode_ci;
+    DEFAULT CHARACTER SET utf8mb4
+    DEFAULT COLLATE utf8mb4_0900_ai_ci;
 
 USE sdu_story_game;
 
--- =============================================================
--- 模块一：用户
--- =============================================================
+-- 用户表
 
 CREATE TABLE `user` (
                         `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '用户主键',
@@ -41,10 +39,6 @@ CREATE TABLE `user` (
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_0900_ai_ci
   COMMENT='用户表';
--- =============================================================
--- 模块二：剧情存档系统
--- --- 内容侧（章节 / 节点 / 选择）：相对静态，由策划录入 ---
--- =============================================================
 
 -- 章节表
 CREATE TABLE `chapter` (
@@ -58,7 +52,10 @@ CREATE TABLE `chapter` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_chapter_code` (`chapter_code`),
   KEY `idx_order` (`order_index`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='章节表';
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_0900_ai_ci
+    COMMENT='章节表';
 
 -- 剧情节点表（图的点）
 -- 一个节点表示“两次剧情跳转之间的一段连续剧情”
@@ -153,7 +150,11 @@ CREATE TABLE `story_line` (
 
                               PRIMARY KEY (`id`),
 
-                              UNIQUE KEY `uk_line_node_order` (`node_id`, `order_index`),
+                              UNIQUE KEY `uk_line_node_order`
+                                  (`node_id`, `order_index`),
+
+                              KEY `idx_required_choice_code`
+                                  (`required_choice_code`),
 
                               CONSTRAINT `fk_line_node`
                                   FOREIGN KEY (`node_id`)
@@ -199,8 +200,9 @@ CREATE TABLE `story_choice` (
                                 UNIQUE KEY `uk_choice_node_code`
                                     (`from_node_id`, `choice_code`),
 
-                                KEY `idx_choice_from` (`from_node_id`),
+                                UNIQUE KEY `uk_choice_code` (`choice_code`),
 
+                                KEY `idx_choice_from` (`from_node_id`),
                                 KEY `idx_choice_to` (`to_node_id`),
 
                                 CONSTRAINT `fk_choice_from`
@@ -219,7 +221,6 @@ CREATE TABLE `story_choice` (
 -- --- 进度侧（存档 / 路径）：玩家动态产生 ---
 
 -- 存档表
--- 使用单存档贯穿任务章节
 CREATE TABLE `game_save` (
                              `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '存档主键',
 
@@ -280,7 +281,7 @@ CREATE TABLE `game_save` (
 ) ENGINE=InnoDB
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_0900_ai_ci
-    COMMENT='贯穿全部章节的游戏存档';
+    COMMENT='人物故事游戏存档';
 
 
 
@@ -337,9 +338,6 @@ CREATE TABLE `save_path` (
 
 
 
--- =============================================================
--- 模块三：成就系统
--- =============================================================
 
 -- 成就定义表
 

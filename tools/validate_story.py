@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Validate an SDU Story Game story-definition JSON file.
+"""
+Validate an SDU Story Game story-definition JSON file
 
 This validator deliberately allows cycles. A cycle is legal when every node in
 it is reachable from the entry and still has at least one route to a real

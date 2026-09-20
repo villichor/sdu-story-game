@@ -4,7 +4,7 @@ import edu.sdu.storygame.data.enums.ResultCode;
 import edu.sdu.storygame.exception.BusinessException;
 
 /**
- * 当前登录用户上下文，基于 ThreadLocal。
+ * 当前登录用户上下文
  */
 public class UserContext {
 

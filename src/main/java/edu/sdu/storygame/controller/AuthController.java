@@ -28,7 +28,7 @@ public class AuthController {
     private boolean mockEnabled;
 
     /**
-     * 游客登录。前端 POST 调用，直接拿到我们系统的 JWT。
+     * 游客登录 直接拿到本系统的JWT
      */
     @PostMapping("/guest")
     public Result<Map<String, String>> guestLogin() {
@@ -37,17 +37,13 @@ public class AuthController {
     }
 
     /**
-     * 统一认证回调接口（Pass 平台 JWT 方式）。
-     *
+     * 统一认证回调接口（Pass 平台 JWT 方式）
      * 完整链路：
      *   1) 前端引导用户跳转到官方登录入口：
      *        https://i.sdu.edu.cn/pass-api/login/page?forward=[本接口地址URL编码]
      *   2) 用户在官方页登录成功后，官方将用户重定向回此接口，URL中带有临时凭证code，expiration = 60s
      *   3) 本接口拿code交给service：调用官方/auth/token 拿到JWT → 验签得到学号姓名 → 查/建用户 → 签发登录态
      *   4) 携带JWT重定向回前端页面
-     *
-     * 注意：这是浏览器重定向落地的接口，不是给前端 ajax 调的，
-     *       所以直接操作 HttpServletResponse 做重定向，而不是返回 Result。
      */
     @GetMapping("/cas/callback")
     public void casCallback(@RequestParam(required = false) String code,

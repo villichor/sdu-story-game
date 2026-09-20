@@ -7,7 +7,6 @@ import edu.sdu.storygame.importer.StoryDefinition.NodeDefinition;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -20,7 +19,7 @@ import java.util.function.Function;
 
 /**
  * 剧情图静态校验器
- * 合法循环不会被禁止，例如“错误答案 -> 返回选择点”。只有无法从入口到达、或进入后无法抵达 chapter_end 的节点才会被判定为错误
+ * 无法从入口到达、或进入后无法抵达 chapter_end 的节点会被判定为错误
  */
 public final class StoryGraphValidator {
 

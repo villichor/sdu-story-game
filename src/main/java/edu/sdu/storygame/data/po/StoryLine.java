@@ -11,7 +11,6 @@ import lombok.Data;
 @Data
 @TableName("story_line")
 public class StoryLine {
-
     @TableId(type = IdType.AUTO)
     private Long id;
     private Long nodeId;
@@ -27,7 +26,6 @@ public class StoryLine {
     private String content;
     // 角色立绘或表情资源标识
     private String portraitRef;
-
     /**
      * 特效标识
      * FADE_OUT
@@ -37,6 +35,6 @@ public class StoryLine {
     private String effectRef;
     // 台词依赖的选择编码，null时展示台词，有值时路径包含该choiceCode展示台词
     private String requiredChoiceCode;
-    // 在当前节点内的播放顺序。
+    // 在当前节点内的播放顺序
     private Integer orderIndex;
 }

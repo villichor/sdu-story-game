@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 成就接口。
+ * 成就接口
  */
 @RestController
 @RequestMapping("/api/achievements")
