@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  forward-headers-strategy: framework
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+
+app:
+  cas:
+    # 统一认证Pass平台的基础地址
+    base-url: https://i.sdu.edu.cn/pass-api
+  cors:
+    allowed-origins: http://localhost:5173

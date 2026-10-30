@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.idea
+.env*
+后端
+backend
+deploy/.env
+*.log

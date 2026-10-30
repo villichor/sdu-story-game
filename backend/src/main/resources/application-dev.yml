@@ -1,0 +1,21 @@
+# 开发环境覆盖配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/sdu_story_game?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+app:
+  jwt:
+    secret: ${APP_JWT_SECRET:local-development-secret-change-before-use}
+    expire: 604800000
+  cas:
+    jwt-secret: ${CAS_JWT_SECRET:local-cas-placeholder}
+    # 认证成功后跳回本地前端
+    frontend-url: http://localhost:5173/login-success
+    mock-enabled: false

@@ -1,8 +1,19 @@
-target/
-*.iml
+# IDE and operating system
 .idea/
-.mvn/
-!.mvn/wrapper/maven-wrapper.jar
+.vscode/
 .DS_Store
+Thumbs.db
+
+# Build outputs and dependencies
+**/target/
+**/node_modules/
+**/dist/
 *.log
-application-local.yml
+
+# Secrets and local overrides
+**/.env
+**/.env.*
+!**/.env.example
+!frontend/.env.development
+!frontend/.env.production
+**/application-local.yml
