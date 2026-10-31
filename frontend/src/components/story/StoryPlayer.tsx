@@ -88,6 +88,7 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  const [fastForward, setFastForward] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
 
   // ---- 演出指令相关状态 ----
@@ -99,6 +100,10 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
   const [collectionToast, setCollectionToast] = useState<string | null>(null)
   const [achvToast, setAchvToast] = useState<{ name: string; desc: string } | null>(null)
   const [minigame, setMinigame] = useState<string | null>(null)
+  const [completedMinigame, setCompletedMinigame] = useState<string | null>(null)
+  const currentPositionKey = story ? `${story.node.id}:${story.currentLineIndex}` : null
+  const currentEffect = parseEffect(story?.node.lines[story.currentLineIndex]?.effectRef ?? null)
+  const minigameBlocked = !!minigame || (currentEffect.kind === 'minigame' && completedMinigame !== currentPositionKey)
   const transitionRef = useRef<HTMLDivElement>(null)
   // 走马灯起始节点: 同一节点内 montage 持续(逐行自动推进), 换节点时重置
   const montageNodeRef = useRef<number | null>(null)
@@ -182,6 +187,26 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
     return () => window.removeEventListener('keydown', onKey)
   }, [failStory, hiddenCg])
 
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Control' && !e.altKey && !e.metaKey && !e.shiftKey) setFastForward(true)
+      else if (e.ctrlKey && e.key !== 'Control') setFastForward(false)
+    }
+    const onKeyUp = (e: KeyboardEvent) => { if (e.key === 'Control') setFastForward(false) }
+    const stop = () => setFastForward(false)
+    const onVisibility = () => { if (document.hidden) stop() }
+    window.addEventListener('keydown', onKeyDown)
+    window.addEventListener('keyup', onKeyUp)
+    window.addEventListener('blur', stop)
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('keyup', onKeyUp)
+      window.removeEventListener('blur', stop)
+      document.removeEventListener('visibilitychange', onVisibility)
+    }
+  }, [])
+
   const load = useCallback(async () => {
     setStatus('loading')
     setError('')
@@ -211,6 +236,7 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
     if (!story?.node) return
     const cur = story?.node?.lines?.[story.currentLineIndex] ?? null
     const eff = parseEffect(cur?.effectRef ?? null)
+    if (eff.kind !== 'minigame') setCompletedMinigame(null)
     // scene/cg 指令在节点内跨句保持; sceneKey/cgKey 记录其所属节点, 只在"同一节点内"生效
     // 换句时重置瞬态效果, 应用本句指令
     setCollectionToast(null)
@@ -312,7 +338,7 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
 
   // 蒙太奇: "走马灯" —— 自动推进本节点各行(每行显示其图片+台词), 到节点末(linear/finished)结束
   useEffect(() => {
-    if (!montage || !story?.node || busy) return
+    if (!montage || !story?.node || busy || minigameBlocked) return
     if (story.interactionType !== 'playing') { setMontage(false); return }
     const iv = setInterval(async () => {
       if (story.interactionType !== 'playing') { setMontage(false); return }
@@ -327,12 +353,12 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
     }, TIMING.MONTAGE_INTERVAL)
     return () => clearInterval(iv)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [montage, story?.currentLineIndex, story?.interactionType, story?.node?.id, busy, saveId])
+  }, [montage, story?.currentLineIndex, story?.interactionType, story?.node?.id, busy, saveId, minigameBlocked])
 
   // 线性(节点末句且有后继): 自动推进到下一节点, 避免"没界面可点"卡住
   const linearAdvancingRef = useRef(false)
   useEffect(() => {
-    if (story?.interactionType !== 'linear' || busy) return
+    if (story?.interactionType !== 'linear' || busy || minigameBlocked) return
     if (linearAdvancingRef.current) return
     if (hiddenCgRef.current) return // 隐藏 CG 文字展示期间不自动推进
     linearAdvancingRef.current = true
@@ -352,7 +378,7 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
       finally { linearAdvancingRef.current = false }
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [story?.node.id, story?.currentLineIndex, story?.interactionType, busy, saveId, hiddenCg])
+  }, [story?.node.id, story?.currentLineIndex, story?.interactionType, busy, saveId, hiddenCg, minigameBlocked])
 
   // 背景切换后, 文字延迟 <0.3s 再出现(避免"换背景+台词"同出突兀)
   useEffect(() => {
@@ -390,7 +416,7 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
     (!!node && (triedChoicesRef.current[nkNow]?.length ?? 0) > 0 && !!isPlaying && (story?.currentLineIndex ?? 0) < node.lines.length)
 
   const handleNext = useCallback(async () => {
-    if (!story || busy) return
+    if (!story || busy || minigameBlocked) return
     console.log('[推进] 点击, interaction=', story.interactionType, 'node=', story.node.nodeCode, 'line=', story.currentLineIndex)
     setBusy(true)
     try {
@@ -423,7 +449,13 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
     } finally {
       setBusy(false)
     }
-  }, [story, busy, saveId, load])
+  }, [story, busy, saveId, load, minigameBlocked])
+
+  useEffect(() => {
+    if (!fastForward || !isPlaying || line?.content?.trim() || busy || showSettings || holdText || bgTextDelay || minigame || failStory || hiddenCg || montage || skippingNow || error) return
+    const timer = window.setTimeout(() => { void handleNext() }, 80)
+    return () => window.clearTimeout(timer)
+  }, [fastForward, isPlaying, line?.content, busy, showSettings, holdText, bgTextDelay, minigame, failStory, hiddenCg, montage, skippingNow, error, handleNext])
 
   const handleChoice = useCallback(
     async (choice: ChoiceOption) => {
@@ -500,7 +532,6 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
   if (!story || !node) return null
 
   const effNow = parseEffect(line?.effectRef ?? null)
-  const speaker = line?.speaker ?? null
   const speakerPortrait = line?.portraitRef ?? null
 
   // 背景: 蒙太奇/CG 指令 → 显示对应图; scene/cg 只在所属节点内生效, 否则退回节点背景
@@ -528,10 +559,11 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
   // 黑屏字幕句: 只显示"黑底居中字幕 + 继续", 不显示对话框; 日期类用横幅
   const isSubtitle = effNow.kind === 'overlay' && effNow.value === 'center_text_dark'
   const isDateOverlay = effNow.kind === 'overlay' && effNow.value.startsWith('date')
+  const fastPlayback = fastForward && !showSettings && !minigameBlocked && !failStory && !hiddenCg && !montage && !skippingNow && !error
 
   return (
     <div style={styles.root} onClick={() => { if (isPlaying && showLine && !line?.content && !isSubtitle && !holdText) void handleNext() }}>
-      <FadeBackground id={bgId} style={bgStyle} hold={dreamHold} contain={isCg} />
+      <FadeBackground id={bgId} style={bgStyle} hold={dreamHold} contain={isCg} fast={fastPlayback} />
       <div style={styles.vignette} />
 
       {/* 顶栏 */}
@@ -550,9 +582,8 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
         if (modernScene && isProtagonist) return null
         const bust = bustUrl(speakerPortrait)
         if (!bust) return null
-        return <img key={speakerPortrait} src={bust} loading="lazy" style={styles.bustImg} alt="bust" />
+        return <img key={speakerPortrait} src={bust} loading="lazy" style={styles.bustImg} className={`story-character${isPlaying && !isSubtitle && !hiddenCg ? ' story-character--dialogue' : ''}`} alt="bust" />
       })()}
-      {speaker && !skippingNow && !montage && <div style={styles.nameTag}>{speaker}</div>}
 
       {/* 走马灯: 屏幕中央浮现当前行台词(随换行淡入淡出, 背景同步交叉溶解) */}
       {montage && line?.content && (
@@ -612,9 +643,9 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
             busy={busy}
             hold={holdText || bgTextDelay}
             onAdvance={handleNext}
-            speedMs={settings.textSpeedMs}
-            autoWaitMs={settings.autoWaitMs}
-            autoEnabled={settings.autoEnabled}
+            speedMs={fastPlayback ? 5 : settings.textSpeedMs}
+            autoWaitMs={fastPlayback ? 80 : settings.autoWaitMs}
+            autoEnabled={!minigameBlocked && (fastPlayback || settings.autoEnabled)}
           />
         )
       )}
@@ -636,9 +667,9 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
           line={line}
           busy={busy}
           onAdvance={handleNext}
-          speedMs={settings.textSpeedMs}
-          autoWaitMs={settings.autoWaitMs}
-          autoEnabled={settings.autoEnabled}
+          speedMs={fastPlayback ? 5 : settings.textSpeedMs}
+          autoWaitMs={fastPlayback ? 80 : settings.autoWaitMs}
+          autoEnabled={!minigameBlocked && (fastPlayback || settings.autoEnabled)}
         />
       )}
       {failStory && (
@@ -676,15 +707,15 @@ export default function StoryPlayer({ saveId, onExit }: Props) {
         </div>
       )}
       {minigame && minigame === 'hua/organize_luggage' && (
-        <MinigameLuggage onComplete={() => setMinigame(null)} />
+        <MinigameLuggage onComplete={() => { setCompletedMinigame(currentPositionKey); setMinigame(null) }} />
       )}
       {minigame && minigame !== 'hua/organize_luggage' && (
-        <div style={styles.minigameOverlay} onClick={() => setMinigame(null)}>
+        <div style={styles.minigameOverlay} onClick={() => { setCompletedMinigame(currentPositionKey); setMinigame(null) }}>
           <div style={styles.minigameCard} onClick={(e) => e.stopPropagation()}>
             <div style={styles.minigameTitle}>互动小游戏</div>
             <div style={styles.minigameBody}>{minigame}</div>
             <div style={styles.minigameHint}>小游戏交互待接入, 点击"完成"跳过</div>
-            <button style={styles.btn} onClick={() => setMinigame(null)}>完成</button>
+            <button style={styles.btn} onClick={() => { setCompletedMinigame(currentPositionKey); setMinigame(null) }}>完成</button>
           </div>
         </div>
       )}
@@ -800,9 +831,14 @@ function SubtitleBeat({ line, busy, onAdvance, speedMs, autoWaitMs, autoEnabled 
     if (reduced) return
     setShown(0)
     setRevealed(false)
-    const iv = setInterval(() => setShown((s) => { if (s < txt.length) return s + 1; setRevealed(true); return s }), speedMs)
-    return () => { clearInterval(iv); if (autoTimerRef.current) clearTimeout(autoTimerRef.current) }
-  }, [line.id, speedMs])
+    return () => { if (autoTimerRef.current) clearTimeout(autoTimerRef.current) }
+  }, [line.id, line.content])
+
+  useEffect(() => {
+    if (revealed || !content) return
+    const iv = setInterval(() => setShown((s) => { if (s < content.length) return s + 1; setRevealed(true); return s }), speedMs)
+    return () => clearInterval(iv)
+  }, [content, revealed, speedMs])
 
   // 自动播放: 全部显现后等 autoWaitMs 自动推进
   useEffect(() => {
@@ -843,15 +879,20 @@ function DialogueBand({ line, busy, hold, onAdvance, speedMs, autoWaitMs, autoEn
     if (reduced) return
     setShown(0)
     setRevealed(false)
+    return () => { if (autoTimerRef.current) clearTimeout(autoTimerRef.current) }
+  }, [line?.id, line?.content, hold])
+
+  useEffect(() => {
+    if (revealed || hold || !content) return
     const iv = setInterval(() => {
       setShown((s) => {
-        if (s < txt.length) return s + 1
+        if (s < content.length) return s + 1
         setRevealed(true)
         return s
       })
     }, speedMs)
-    return () => { clearInterval(iv); if (autoTimerRef.current) clearTimeout(autoTimerRef.current) }
-  }, [line?.id, line?.content, hold, speedMs])
+    return () => clearInterval(iv)
+  }, [content, hold, revealed, speedMs])
 
   // 自动播放: reveal 后等 autoWaitMs 再推进(用户交互会先清除定时器)
   useEffect(() => {
@@ -876,11 +917,12 @@ function DialogueBand({ line, busy, hold, onAdvance, speedMs, autoWaitMs, autoEn
   // 空内容行 / 特效(hold)期间 不渲染文字框(避免空框/符号外露), 特效结束再出现
   if (!content || hold) return null
   return (
-    <div style={styles.textBand} onClick={handleClick} role="button" aria-label="继续">
-      <div style={styles.content}>
-        <span style={styles.bracket}>「</span>{content.slice(0, shown)}<span style={styles.bracket}>」</span>
+    <div className="dialogue-panel" onClick={handleClick} role="button" tabIndex={0} aria-label="继续剧情" onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick() } }}>
+      <div className="dialogue-speaker" aria-hidden={!line?.speaker}>{line?.speaker || '\u00a0'}</div>
+      <div className={`dialogue-content${line?.speaker ? '' : ' dialogue-content--narration'}`}>
+        {content.slice(0, shown)}
       </div>
-      <div style={styles.nextHint}>{revealed ? '▸ 点击继续' : '点击跳过'}</div>
+      <div className="dialogue-hint">{revealed ? '▸ 点击继续' : '点击显示全文'}</div>
     </div>
   )
 }
@@ -895,14 +937,10 @@ const styles = {
   pageTag: { fontFamily: 'var(--font-display)', fontSize: 15, color: theme.textSoft, fontWeight: 600, background: 'rgba(255,255,255,0.7)', border: '1px solid ' + theme.border, borderRadius: 8, padding: '4px 12px', backdropFilter: 'blur(4px)' },
   escBtn: { marginLeft: 'auto', background: theme.panel, color: theme.gold, border: '1px solid ' + theme.goldDark, borderRadius: 10, padding: '8px 20px', fontWeight: 600, cursor: 'pointer', boxShadow: theme.e1, fontSize: 13, flexShrink: 0 },
   bustImg: { position: 'absolute' as const, left: '2%', bottom: '0', width: 320, height: '66%', objectFit: 'contain', objectPosition: 'center bottom', zIndex: 3, filter: 'drop-shadow(0 12px 22px rgba(0,0,0,0.24))', pointerEvents: 'none', animation: 'fadeIn 400ms var(--ease)' },
-  nameTag: { position: 'absolute' as const, left: '3%', bottom: '1.6%', zIndex: 9, background: 'rgba(20,20,22,0.52)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.28)', borderRadius: 8, padding: '5px 16px', fontSize: 14, color: '#fff', fontWeight: 700, letterSpacing: '0.08em', boxShadow: theme.e1 },
   montageOverlay: { position: 'absolute' as const, inset: 0, zIndex: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 10%', background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 100%)', pointerEvents: 'none' as const },
   montageLine: { color: '#fff', fontSize: 21, lineHeight: 2, letterSpacing: '0.1em', textAlign: 'center' as const, maxWidth: 860, textShadow: '0 2px 12px rgba(0,0,0,0.85)', fontFamily: 'var(--font-display)', animation: 'montageLineIn 700ms var(--ease) both' },
   stage: { position: 'absolute' as const, left: 0, right: 0, bottom: 0, padding: '0 24px 120px', zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 },
-  textBand: { position: 'absolute' as const, left: 0, right: 0, bottom: 0, zIndex: 8, background: 'linear-gradient(180deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.55) 40%, rgba(255,255,255,0.72) 100%)', padding: '28px 12% 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 126, cursor: 'pointer' },
-  content: { fontSize: 18, lineHeight: 1.8, letterSpacing: '0.03em', color: theme.text, maxWidth: 980, textAlign: 'center' as const, textShadow: '0 1px 2px rgba(255,255,255,0.5)' },
   bracket: { color: theme.gold, fontWeight: 700, margin: '0 4px' },
-  nextHint: { marginTop: 10, fontSize: 12, color: theme.textLight, letterSpacing: '0.08em', alignSelf: 'flex-end' },
   scenarioWrap: { width: '100%', maxWidth: 760, animation: 'rise 280ms var(--ease)' },
   scenario: { display: 'flex', flexDirection: 'column', gap: 12, background: 'rgba(255,255,255,0.9)', border: '1px solid ' + theme.border, borderRadius: 14, padding: 22, color: theme.text, boxShadow: theme.e2, backdropFilter: 'blur(8px)' },
   scenarioTitle: { fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 16, color: theme.gold, marginBottom: 2 },

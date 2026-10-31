@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 
 interface Layer { id: string; style: CSSProperties; contain: boolean; imgUrl: string | null }
-interface Props { id: string; style: CSSProperties; hold?: boolean; contain?: boolean }
+interface Props { id: string; style: CSSProperties; hold?: boolean; contain?: boolean; fast?: boolean }
 
 /** 从背景样式里提取 url(...) 中的图片地址(纯渐变兜底时为 null) */
 function bgImageUrl(style: CSSProperties): string | null {
@@ -32,7 +32,7 @@ function preload(url: string): Promise<void> {
  * - contain=true(CG 等 4:3 插图): 黑底 + object-fit:contain 完整展示, 不裁切;
  *   contain=false(场景背景): 全屏 cover 铺满。
  */
-export default function FadeBackground({ id, style, hold = false, contain = false }: Props) {
+export default function FadeBackground({ id, style, hold = false, contain = false, fast = false }: Props) {
   const [shown, setShown] = useState<Layer>(() => ({ id, style, contain, imgUrl: bgImageUrl(style) }))
   const [prev, setPrev] = useState<Layer | null>(null)
   const shownRef = useRef<Layer>(shown)
@@ -60,22 +60,22 @@ export default function FadeBackground({ id, style, hold = false, contain = fals
 
   return (
     <>
-      {prev && renderLayer(prev)}
-      {renderLayer(shown)}
+      {prev && renderLayer(prev, fast)}
+      {renderLayer(shown, fast)}
     </>
   )
 }
 
-function renderLayer(layer: Layer) {
+function renderLayer(layer: Layer, fast: boolean) {
   const useContain = layer.contain && layer.imgUrl
   if (!useContain) {
     // 场景背景 / 纯渐变兜底: div 背景 cover 全屏
-    return <div key={layer.id} className="bgFade" style={{ ...styles.layer, ...layer.style }} />
+    return <div key={layer.id} className="bgFade" style={{ ...styles.layer, ...layer.style, animationDuration: fast ? '180ms' : undefined }} />
   }
   // CG 类插图(录取通知书 / 历史蒙太奇图片等): 必须 contain 完整展示, 不能裁切关键内容
   // 四周留的空位用深米金渐变填充, 比纯黑边更有"档案/文物感"
   return (
-    <div key={layer.id} className="bgFade" style={{ ...styles.layer, ...styles.cgBackdrop }}>
+    <div key={layer.id} className="bgFade" style={{ ...styles.layer, ...styles.cgBackdrop, animationDuration: fast ? '180ms' : undefined }}>
       <img src={layer.imgUrl!} alt="" loading="lazy" style={styles.imgContain} />
     </div>
   )

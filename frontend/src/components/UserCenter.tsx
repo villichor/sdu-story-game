@@ -3,11 +3,12 @@ import { startCasLogin } from '../lib/auth'
 import { Modal } from './Modal'
 import { theme } from '../theme'
 
-export function UserCenter({ onClose }: { onClose: () => void }) {
+export function UserCenter({ onClose, requireLogin = false }: { onClose: () => void; requireLogin?: boolean }) {
   const { user, loginGuest, logout } = useAuth()
 
   return (
     <Modal title="登录 / 注册" onClose={onClose}>
+      {requireLogin && <p role="status" style={styles.required}>请先登录，再继续操作。</p>}
       {/* 用户信息面板 */}
       <div style={styles.info}>
         <div style={styles.avatar}>{user ? user.username.slice(0, 1) : '?'}</div>
@@ -53,6 +54,7 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 const styles = {
+  required: { margin: '0 0 20px', color: theme.error, fontWeight: 600 },
   info: { display: 'flex', gap: 22, alignItems: 'center', marginBottom: 24 },
   avatar: { width: 72, height: 72, borderRadius: '50%', background: theme.cyan, color: theme.cyanText, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 700, flexShrink: 0 },
   rows: { flex: 1, display: 'grid', gap: 8 },

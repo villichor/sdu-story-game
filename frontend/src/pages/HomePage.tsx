@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 import { CaretRight } from '@phosphor-icons/react'
 import { useAuth } from '../auth/AuthContext'
 import { USE_MOCK } from '../api'
-import { startCasLogin } from '../lib/auth'
 import { ChapterPicker } from '../components/ChapterPicker'
 import { SettingsModal } from '../components/SettingsModal'
 import { UserCenter } from '../components/UserCenter'
@@ -14,7 +13,7 @@ import { homeBg } from '../assets/home/bgs'
 export default function HomePage() {
   const navigate = useNavigate()
   const { user, loginGuest } = useAuth()
-  const [modal, setModal] = useState<'user' | 'chapter' | 'settings' | null>(null)
+  const [modal, setModal] = useState<'user' | 'loginRequired' | 'chapter' | 'settings' | null>(null)
   const root = useRef<HTMLDivElement>(null)
   // 会话级共享随机背景(刷新才换, 页面间一致)
   const bg = homeBg()
@@ -30,7 +29,7 @@ export default function HomePage() {
     const ctx = gsap.context(() => {
       gsap.fromTo('.h-title', { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' })
       gsap.fromTo('.h-menu > *', { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, delay: 0.15, ease: 'power3.out' })
-      gsap.fromTo('.h-bg', { scale: 1.08, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.1, ease: 'power2.out' })
+      gsap.fromTo('.h-bg', { scale: 1.08 }, { scale: 1, duration: 1.1, ease: 'power2.out' })
     }, root)
     return () => ctx.revert()
   }, [])
@@ -69,25 +68,18 @@ export default function HomePage() {
         {user ? user.username.slice(0, 1) : '登'}
       </button>
 
-      {/* 游客态: 学号/统一认证登录 */}
-      {(!user || user.isGuest) && (
-        <button style={styles.casBtn} className="lift" onClick={() => startCasLogin('/')}>
-          学号登录
-        </button>
-      )}
-
       {/* 右下角: 菜单 */}
       <nav style={styles.menu} className="h-menu">
-        <button style={styles.menuPrimary} className="lift" onClick={() => setModal('chapter')}>
+        <button style={styles.menuPrimary} className="lift" onClick={() => setModal(user ? 'chapter' : 'loginRequired')}>
           <span style={styles.menuPrimaryText}>开始新游戏</span>
           <span style={styles.menuPrimarySub}>NEW GAME</span>
         </button>
         <div style={styles.menuRow}>
-          <button style={styles.menuSmall} className="lift" onClick={() => navigate('/continue')}>
+          <button style={styles.menuSmall} className="lift" onClick={() => user ? navigate('/continue') : setModal('loginRequired')}>
             <span style={styles.menuSmallText}>继续游戏</span>
             <span style={styles.menuSmallSub}>存档</span>
           </button>
-          <button style={styles.menuSmall} className="lift" onClick={() => navigate('/achievements')}>
+          <button style={styles.menuSmall} className="lift" onClick={() => user ? navigate('/achievements') : setModal('loginRequired')}>
             <span style={styles.menuSmallText}>成就</span>
             <span style={styles.menuSmallSub}>记忆册</span>
           </button>
@@ -99,6 +91,7 @@ export default function HomePage() {
       </nav>
 
       {modal === 'user' && <UserCenter onClose={() => setModal(null)} />}
+      {modal === 'loginRequired' && <UserCenter requireLogin onClose={() => setModal(null)} />}
       {modal === 'chapter' && <ChapterPicker onClose={() => setModal(null)} />}
       {modal === 'settings' && <SettingsModal onClose={() => setModal(null)} />}
     </div>
@@ -113,7 +106,6 @@ const styles = {
   title: { fontFamily: 'var(--font-display)', fontSize: 'clamp(34px, 5.2vw, 60px)', letterSpacing: '0.01em', color: theme.text, fontWeight: 800, margin: '0 0 16px', textShadow: '0 1px 0 rgba(255,255,255,0.4)' },
   subtitle: { fontSize: 15, color: theme.gold, letterSpacing: '0.18em', fontWeight: 600 },
   userCircle: { position: 'absolute' as const, top: 30, right: 34, width: 58, height: 58, borderRadius: '50%', background: theme.gold, color: theme.onGold, border: '3px solid rgba(255,255,255,0.9)', fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, cursor: 'pointer', boxShadow: theme.e2 },
-  casBtn: { position: 'absolute' as const, top: 100, right: 34, background: 'rgba(255,255,255,0.92)', color: theme.gold, border: '1px solid ' + theme.border, borderRadius: 10, padding: '7px 16px', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: theme.e1, backdropFilter: 'blur(6px)' },
   menu: { position: 'absolute' as const, right: 44, bottom: 40, width: 320, display: 'flex', flexDirection: 'column', gap: 14, zIndex: 4 },
   menuPrimary: { display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'flex-start', textAlign: 'left', padding: '20px 26px', background: theme.gold, color: theme.onGold, border: 'none', borderRadius: 16, boxShadow: '0 8px 28px rgba(166,30,46,0.32)', cursor: 'pointer' },
   menuPrimaryText: { fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, letterSpacing: '0.02em' },

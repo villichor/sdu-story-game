@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -14,11 +14,10 @@ import { useAuth } from '../auth/AuthContext'
 import { resetSettings, useSettings } from '../lib/useSettings'
 import { theme } from '../theme'
 
-/* ===== 设置弹窗: 顶部 4 个 tab 切换, 每次只显示一组卡片, 单屏装得下 ===== */
+/* ===== 设置弹窗: 按标签切换设置 ===== */
 type SettingsTab = 'audio' | 'text' | 'story' | 'account'
 
 const TABS: { k: SettingsTab; label: string; icon: ReactNode }[] = [
-  { k: 'audio',  label: '音量演出', icon: <SpeakerSimpleHigh size={15} weight="duotone" /> },
   { k: 'text',   label: '文本自动', icon: <TextAa size={15} weight="duotone" /> },
   { k: 'story',  label: '剧情入口', icon: <MonitorPlay size={15} weight="duotone" /> },
   { k: 'account',label: '用户数据', icon: <UserCircle size={15} weight="duotone" /> },
@@ -29,7 +28,7 @@ function SettingsView({ onClose, currentSaveId }: { onClose: () => void; current
   const navigate = useNavigate()
   const { logout, user } = useAuth()
   const [saves, setSaves] = useState<GameSaveVO[]>([])
-  const [tab, setTab] = useState<SettingsTab>('audio')
+  const [tab, setTab] = useState<SettingsTab>('text')
   const [dangerMsg, setDangerMsg] = useState<{ title: string; desc: string; onConfirm: () => Promise<void> } | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
@@ -45,8 +44,6 @@ function SettingsView({ onClose, currentSaveId }: { onClose: () => void; current
   }, [toast])
 
   const totalSaves = saves.length
-
-  const previewSentence = useMemo(() => '先生所言极是。吾辈当以继往圣之绝学, 为往世开太平。', [])
 
   function textSpeedLabel(ms: number) {
     if (ms <= 20) return '极速'
@@ -209,7 +206,7 @@ function SettingsView({ onClose, currentSaveId }: { onClose: () => void; current
           <div style={styles.divider} />
           <div>
             <div style={{ fontSize: 12, color: theme.textSoft, marginBottom: 8 }}>预览句子(随"逐字速度"变化, 数字越小越快):</div>
-            <div style={styles.previewBox}>{previewSentence}</div>
+            <div style={styles.previewBox}><TextSpeedPreview key={settings.textSpeedMs} speedMs={settings.textSpeedMs} /></div>
           </div>
         </section>
       )
@@ -362,6 +359,21 @@ export function SettingsModal({ onClose, currentSaveId }: { onClose: () => void;
 
 /* ================= 小组件 ================= */
 
+function TextSpeedPreview({ speedMs }: { speedMs: number }) {
+  const text = '为天地立心，为生民立命，为往圣继绝学，为万世开太平。'
+  const [shown, setShown] = useState(0)
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setShown((current) => {
+        if (current + 1 >= text.length) window.clearInterval(timer)
+        return Math.min(current + 1, text.length)
+      })
+    }, speedMs)
+    return () => window.clearInterval(timer)
+  }, [speedMs, text.length])
+  return <span aria-label={text}>{text.slice(0, shown)}</span>
+}
+
 function VolumeSlider({
   label, value, onInput, icon,
 }: { label: string; value: number; onInput: (n: number) => void; icon: ReactNode }) {
@@ -392,7 +404,7 @@ function SliderRow({
       <div style={styles.rowIcon}>{icon}</div>
       <div style={styles.rowLabel}>{label}</div>
       <input
-        type="range" min={min} max={max} step={step ?? 1} value={value}
+        type="range" aria-label={label} min={min} max={max} step={step ?? 1} value={value}
         style={styles.range}
         onChange={(e) => onInput(Number(e.target.value))}
       />
@@ -429,7 +441,7 @@ function NavLink({
   return (
     <button
       style={{ ...styles.navLink, opacity: disabled ? 0.55 : 1, cursor: disabled ? 'wait' : 'pointer' }}
-      className="settings-control"
+      className="settings-control settings-nav-link"
       onClick={onClick}
       disabled={disabled}
     >
@@ -578,7 +590,7 @@ const styles = {
     textAlign: 'right', fontFamily: 'var(--font-display)', fontWeight: 700, color: theme.text, fontSize: 13,
   },
   previewBox: {
-    padding: '14px 16px', borderRadius: 12, border: `1px solid ${theme.border}`,
+    minHeight: 53, padding: '14px 16px', borderRadius: 12, border: `1px solid ${theme.border}`,
     background: 'rgba(246,246,244,0.6)',
     color: theme.text, fontSize: 14, lineHeight: 1.6, fontFamily: 'var(--font-body)',
   },

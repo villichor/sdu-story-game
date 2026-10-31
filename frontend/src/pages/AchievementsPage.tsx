@@ -106,21 +106,22 @@ export default function AchievementsPage() {
       <div style={styles.content}>
 
         {/* ---------- 头卡：成就进度大圆 + 收集物数字 ---------- */}
-        <div style={styles.hero}>
-          <div style={styles.heroRing}>
-            <RingPct pct={progress} />
-            <div style={styles.heroRingText}>
-              <div style={styles.heroPercent}>{progress}<span style={{ fontSize: 16 }}>%</span></div>
-              <div style={styles.heroLabel}>记忆完成度</div>
+        <div className="achievement-summary" style={styles.hero}>
+          <div style={styles.heroOverview}>
+            <div style={styles.heroTitle}>我的山大记忆</div>
+            <div style={styles.heroRing}>
+              <RingPct pct={progress} />
+              <div style={styles.heroRingText}>
+                <div style={styles.heroPercent}>{progress}<span style={{ fontSize: 16 }}>%</span></div>
+                <div style={styles.heroLabel}>记忆完成度</div>
+              </div>
+            </div>
+            <div style={styles.heroMeta}>
+              <div>{totalUnlocked} / {achievements.length} 成就解锁</div>
+              <div>{collUnlocked} / {collections.length} 物件收集</div>
             </div>
           </div>
           <div style={styles.heroBody}>
-            <div style={styles.heroTitle}>我的山大记忆</div>
-            <div style={styles.heroMeta}>
-              {totalUnlocked} <span style={{ color: theme.textLight }}>/ {achievements.length} 成就解锁</span>
-              <span style={{ margin: '0 10px', color: theme.border }}>·</span>
-              {collUnlocked} <span style={{ color: theme.textLight }}>/ {collections.length} 物件收集</span>
-            </div>
             <div style={styles.heroChips}>
               {TABS.map((t) => {
                 const n = achievements.filter((a) => t.k === 'all' || a.type === t.k).filter((a) => a.unlocked).length
@@ -136,7 +137,7 @@ export default function AchievementsPage() {
                 )
               })}
             </div>
-            <div style={{ display: 'flex', gap: 12, marginTop: 4 }}>
+            <div style={styles.heroActions}>
               <button style={styles.btnPrimary} className="lift" onClick={() => { setBookTab('achv'); setShowBook(true) }}>
                 <Sparkle size={14} weight="fill" /> 成就册
               </button>
@@ -300,14 +301,14 @@ function RingPct({ pct }: { pct: number }) {
   return (
     <svg width={130} height={130} viewBox="0 0 130 130">
       <circle cx={65} cy={65} r={R} stroke={theme.panelDeep} strokeWidth={10} fill="none" />
-      <circle
+      {pct > 0 && <circle
         cx={65} cy={65} r={R}
         stroke={`url(#ringGrad)`}
         strokeWidth={10} fill="none"
         strokeDasharray={`${dash} ${C - dash}`}
         strokeLinecap="round"
         transform="rotate(-90 65 65)"
-      />
+      />}
       <defs>
         <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor={theme.gold} />
@@ -654,23 +655,25 @@ const styles = {
 
   /* ---- 头卡 ---- */
   hero: {
-    display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 28, alignItems: 'center',
+    display: 'grid', gridTemplateColumns: '230px minmax(0, 1fr)', gap: 32, alignItems: 'center',
     padding: '26px 28px',
     background: 'rgba(255,255,255,0.90)', border: `1px solid ${theme.border}`, borderRadius: 22,
     boxShadow: theme.e2, backdropFilter: 'blur(14px)',
   },
+  heroOverview: { display: 'flex', flexDirection: 'column' as const, alignItems: 'center', gap: 16, textAlign: 'center' as const },
   heroRing: { width: 130, height: 130, position: 'relative' as const, display: 'flex', alignItems: 'center', justifyContent: 'center' },
-  heroRingText: { position: 'absolute' as const, inset: 0, display: 'grid', placeItems: 'center' },
-  heroPercent: { fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 30, color: theme.gold },
-  heroLabel: { fontSize: 11, color: theme.textLight, letterSpacing: 0.8, marginTop: -4 },
+  heroRingText: { position: 'absolute' as const, inset: 0, display: 'flex', flexDirection: 'column' as const, alignItems: 'center', justifyContent: 'center', gap: 4 },
+  heroPercent: { fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 30, lineHeight: 1, color: theme.gold },
+  heroLabel: { fontSize: 11, color: theme.textLight, letterSpacing: 0.8 },
   heroBody: { flex: 1, minWidth: 0 },
   heroTitle: { fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 24, letterSpacing: 0.5 },
-  heroMeta: { color: theme.text, fontSize: 14, marginTop: 6, fontWeight: 600 },
-  heroChips: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginTop: 16 },
-  heroChip: { display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', background: 'rgba(166,30,46,0.04)', borderRadius: 12, border: `1px solid ${theme.border}` },
+  heroMeta: { display: 'flex', flexWrap: 'wrap' as const, justifyContent: 'center', gap: '4px 14px', color: theme.textSoft, fontSize: 13, fontWeight: 600 },
+  heroChips: { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 12 },
+  heroChip: { display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', background: 'rgba(166,30,46,0.04)', borderRadius: 12, border: `1px solid ${theme.border}` },
   heroChipIcon: { width: 32, height: 32, borderRadius: 8, display: 'grid', placeItems: 'center', color: theme.gold, background: '#fff', boxShadow: theme.e1 },
   heroChipTitle: { fontWeight: 700, fontSize: 13 },
   heroChipMeta: { fontSize: 11, color: theme.textLight },
+  heroActions: { display: 'flex', flexWrap: 'wrap' as const, alignItems: 'center', gap: 12, marginTop: 18 },
 
   btnPrimary: {
     display: 'inline-flex', alignItems: 'center', gap: 6,
